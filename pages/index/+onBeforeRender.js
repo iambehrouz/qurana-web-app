@@ -7,7 +7,7 @@ const onBeforeRender = async (pageContext) => {
     filters: {
       query: {
         postId: null,
-        languageId: pageContext.data.lngId,
+        // languageId: pageContext.data.lngId,
         title: null,
         isActive: true,
         minDate: null,
@@ -32,13 +32,6 @@ const onBeforeRender = async (pageContext) => {
   return {
     pageContext: {
       data: {
-        posts,
-        bannerSlides: pageContext.data.settings.value.pages.index.slider.images,
-        mostSelling: pageContext.data.settings.value.pages.index.mostSelling.productIds,
-        newest: pageContext.data.settings.value.pages.index.newest.productIds,
-        offer: pageContext.data.settings.value.pages.index.offer,
-        topPicks: pageContext.data.settings.value.pages.index.topPicks.productIds,
-        storeCategory: pageContext.data.storeCategory,
         lng: pageContext.data.lng,
         lngId: pageContext.data.lngId
       },

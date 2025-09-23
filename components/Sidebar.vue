@@ -90,7 +90,7 @@ export default {
       </div>
       <div class="box-body">
         <ul>
-          <li v-for="(item, index) in posts.items">
+          <li v-for="(item, index) in posts.items" :key="index">
             <a
               :href="`/blog/posts/${item.postId}`"
               target="_blank"

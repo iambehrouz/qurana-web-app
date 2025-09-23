@@ -76,17 +76,7 @@ async function startServer() {
     const { lng, urlWithoutLng, lngId } = extractLanguage(req.originalUrl);
     var user = null;
     var settings = null;
-    var storeCategory = null;
     var sidebarPosts = null;
-    var activeCategory = {
-      category: null,
-      childs: [],
-      parent: null,
-      ordering: null,
-      parentId: null,
-      path: null,
-      slug: null,
-    };
 
     var xAccessToken = req.cookies["x-access-token"];
 
@@ -95,7 +85,6 @@ async function startServer() {
     }
 
     settings = await getSettings(lngId);
-    storeCategory = await getCategory(settings.value.store.categoryId);
     sidebarPosts = await getSidebarPosts(lngId);
 
     const pageContextInit = {
@@ -106,8 +95,6 @@ async function startServer() {
         xAccessToken,
         user,
         settings,
-        storeCategory,
-        activeCategory,
         sidebarPosts,
       },
     };
@@ -154,7 +141,7 @@ async function getSettings(lngId) {
       `${config.apiUrl}/settings/get`,
       {
         query: {
-          settingKey: "theme",
+          settingKey: "system",
           languageId: lngId
         },
       },
@@ -167,33 +154,6 @@ async function getSettings(lngId) {
     .then(function (response) {
       if (response.data.status == true) {
         return response.data.data.settings.items[0];
-      } else if (response.data.status == false) {
-        return null;
-      }
-    })
-    .catch(function (error) {});
-
-  return result;
-}
-
-async function getCategory(categoryId) {
-  var result = await axios
-    .post(
-      `${config.apiUrl}/categories/get`,
-      {
-        query: {
-          categoryId: categoryId,
-        },
-      },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-    .then(function (response) {
-      if (response.data.status == true) {
-        return response.data.data;
       } else if (response.data.status == false) {
         return null;
       }
