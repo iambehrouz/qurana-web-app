@@ -1,29 +1,17 @@
 <script setup>
 import { ref } from "vue";
-import CartSidebar from "./CartSideBar.vue";
 import { usePageContext } from "../renderer/usePageContext";
 import axios from "axios";
 import config from "../config.json";
-import Search from "./Search.vue";
-import DesktopSearch from "./DesktopSearch.vue";
 import * as langauges from "../languages/index";
 import Link from "../renderer/Link.vue";
 
-const isSearchOpen = ref(false);
 const isActive = ref(false);
 const isShowCategories = ref(false);
 const isShowProducts = ref(false);
 const isShowLanguages = ref(false);
 const pageContext = usePageContext();
 const phrases = langauges.getPhrases(pageContext.data.lng);
-
-const cartSidebar = ref(null);
-const cartSidebarOverlay = ref(null);
-
-const openCartSidebar = () => {
-  cartSidebar.value.style.transform = "translateX(0)";
-  cartSidebarOverlay.value.style.display = "block";
-};
 
 function toggleMobileMenu() {
   isActive.value = !isActive.value;
@@ -63,8 +51,6 @@ const showCallToggle = () => {
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
-  cartSidebar.value = document.getElementById("cart-menu-container");
-  cartSidebarOverlay.value = document.getElementById("cart-menu-overlay");
 });
 
 onBeforeUnmount(() => {
@@ -74,71 +60,57 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="header-container" id="header" :class="{ sticky: isSticky }">
-    <div class="header-wrapper">
+    <div class="header-wrapper w-100 p-0">
       <header
         class="d-flex flex-lg-column justify-content-between align-items-center"
       >
         <div
-          class="d-flex w-100 justify-content-between align-items-center px-2 px-lg-5"
+          class="header-content h-100 d-flex w-100 align-items-center justify-content-between"
         >
-          <div class="d-flex d-lg-none align-items-center gap-2">
+          <!-- Mobile hamburger menu -->
+          <div class="d-flex d-lg-none align-items-center header-left">
             <button class="hm-menu" @click="toggleMobileMenu">
               <img
                 src="../assets/images/humbergar-menu.svg"
                 alt="hamberger-menu"
               />
             </button>
-            <div class="d-flex align-items-center">
-              <div class="dropdown language-selector">
-                <button
-                  class="language-button dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  @click="isShowLanguages = !isShowLanguages"
-                >
-                  <img
-                    class="menu-icon"
-                    src="../assets/images/language.svg"
-                    style="width: 35px; height: 35px"
-                  />
-                </button>
-                <ul
-                  class="language-dropdown dropdown-menu d-block text-center"
-                  v-if="isShowLanguages"
-                >
-                  <li>
-                    <div class="dropdown-item curser" @click="changeLng('/')">
-                      {{ phrases.header.english }}
-                    </div>
-                  </li>
-                  <li>
-                    <div class="dropdown-item curser" @click="changeLng('/ar')">
-                      {{ phrases.header.arabic }}
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
 
-          <Link class="header-logo-container" href="/">
+          <!-- Desktop menu links -->
+          <div class="d-none d-lg-flex align-items-center desktop-menu-links">
+            <Link class="desktop-menu-link" href="/">
+              {{ phrases.header.menu.home }}
+            </Link>
+            <Link class="desktop-menu-link" href="/blog">
+              {{ phrases.header.menu.blog }}
+            </Link>
+            <Link class="desktop-menu-link" href="/about">
+              {{ phrases.header.menu.aboutUs }}
+            </Link>
+            <Link class="desktop-menu-link" href="/contact">
+              {{ phrases.header.menu.contactUs }}
+            </Link>
+          </div>
+
+          <Link
+            class="header-logo-container d-flex justify-content-center"
+            href="/"
+          >
             <img
               class="header-logo m-0"
-              src="./../assets/images/tt-logo-brown.png"
-              alt="trendy-trades"
+              src="./../assets/images/qurana-logo.svg"
+              alt="Qurana"
             />
           </Link>
 
-          <div class="d-none d-lg-block desktop-search-wrapper">
-            <DesktopSearch />
-          </div>
-
-          <div class="d-flex gap-2 align-items-center">
+          <div
+            class="d-flex gap-2 justify-content-end align-items-center header-right"
+          >
             <div class="d-none d-lg-flex align-items-center">
               <div class="dropdown language-selector">
                 <button
-                  class="language-button dropdown-toggle"
+                  class="language-button p-1 dropdown-toggle"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -147,7 +119,7 @@ onBeforeUnmount(() => {
                   <img
                     class="menu-icon"
                     src="../assets/images/language.svg"
-                    style="width: 35px; height: 35px"
+                    style="width: 20px; height: 20px"
                   />
                 </button>
                 <ul
@@ -156,38 +128,71 @@ onBeforeUnmount(() => {
                 >
                   <li>
                     <div class="dropdown-item curser" @click="changeLng('/')">
-                      {{ phrases.header.english }}
+                      {{ phrases.header.french }}
                     </div>
                   </li>
                   <li>
-                    <div class="dropdown-item curser" @click="changeLng('/ar')">
-                      {{ phrases.header.arabic }}
+                    <div class="dropdown-item curser" @click="changeLng('/en')">
+                      {{ phrases.header.english }}
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
-            <Link href="/cart">
+            <!-- <Link href="/cart">
               <img
                 class="mx-lg-1"
                 src="../assets/images/shopping-bag.svg"
                 style="height: 28px"
                 alt="shopping_basket"
               />
-            </Link>
-            <Link
-              class="desktop-account-button d-none d-lg-block px-3 py-2"
-              href="/account"
-            >
-              {{ phrases.header.menu.account }}
-            </Link>
-            <button class="d-lg-none" @click="isSearchOpen = true">
+            </Link> -->
+            <div class="d-flex align-items-center d-lg-none">
+              <div class="dropdown language-selector">
+                <button
+                  class="language-button dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  @click="isShowLanguages = !isShowLanguages"
+                >
+                  <img
+                    class="menu-icon"
+                    src="../assets/images/language.svg"
+                    style="width: 16px; height: 16px"
+                  />
+                </button>
+                <ul
+                  class="language-dropdown dropdown-menu d-block text-center"
+                  v-if="isShowLanguages"
+                >
+                  <li>
+                    <div class="dropdown-item curser" @click="changeLng('/')">
+                      {{ phrases.header.french }}
+                    </div>
+                  </li>
+                  <li>
+                    <div class="dropdown-item curser" @click="changeLng('/en')">
+                      {{ phrases.header.english }}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <Link class="d-lg-none language-button" href="/account">
               <img
-                src="../assets/images/search-icon.svg"
-                style="height: 28px"
+                src="../assets/images/header-user.svg"
+                style="height: 16px"
                 alt=""
               />
-            </button>
+            </Link>
+            <Link class="d-none d-lg-flex language-button" href="/account">
+              <img
+                src="../assets/images/header-user.svg"
+                style="height: 20px"
+                alt=""
+              />
+            </Link>
           </div>
 
           <div class="back d-none" @click="toggleMobileMenu"></div>
@@ -197,8 +202,8 @@ onBeforeUnmount(() => {
             <Link href="/">
               <img
                 class="header-logo-menu mb-4"
-                src="./../assets/images/tt-logotext.png"
-                alt="trendy-trades"
+                src="./../assets/images/qurana-logo.svg"
+                alt="Qurana"
               />
             </Link>
 
@@ -214,26 +219,16 @@ onBeforeUnmount(() => {
             <div v-if="!isShowCategories && !isShowProducts" dir="rtl">
               <!-- links -->
               <Link
-              :class=" pageContext.data.lng == 'en' ? 'flex-row-reverse' : 'flex-row'"
-                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2"
+                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2 flex-row-reverse"
                 href="/"
                 @click="toggleMobileMenu"
               >
                 <img src="../assets/images/home-b.svg" alt="" />
                 <span>{{ phrases.header.menu.home }}</span>
               </Link>
-              <div
-              :class=" pageContext.data.lng == 'en' ? 'flex-row-reverse' : 'flex-row'"
-                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2 curser"
-                @click="toggleIsShowCategories"
-              >
-                <i class="fa-solid fa-bag-shopping menu-icon"></i>
-                <span>{{ phrases.header.menu.store }}</span>
-              </div>
 
               <Link
-              :class=" pageContext.data.lng == 'en' ? 'flex-row-reverse' : 'flex-row'"
-                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2"
+                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2 flex-row-reverse"
                 href="/blog"
                 @click="toggleMobileMenu"
               >
@@ -241,8 +236,7 @@ onBeforeUnmount(() => {
                 <span> {{ phrases.header.menu.blog }}</span>
               </Link>
               <Link
-              :class=" pageContext.data.lng == 'en' ? 'flex-row-reverse' : 'flex-row'"
-                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2"
+                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2 flex-row-reverse"
                 href="/about"
                 @click="toggleMobileMenu"
               >
@@ -250,8 +244,7 @@ onBeforeUnmount(() => {
                 <span>{{ phrases.header.menu.aboutUs }}</span>
               </Link>
               <Link
-              :class=" pageContext.data.lng == 'en' ? 'flex-row-reverse' : 'flex-row'"
-                class="call-us d-flex align-items-center border-bottom pb-3 gap-3"
+                class="call-us d-flex align-items-center border-bottom pb-3 gap-3 flex-row-reverse"
                 href="/contact"
                 @click="toggleMobileMenu"
               >
@@ -302,133 +295,11 @@ onBeforeUnmount(() => {
                 />
               </a>
             </div>
-
-            <div v-if="isShowCategories" dir="rtl">
-              <Link
-              :class=" pageContext.data.lng == 'en' ? 'flex-row-reverse' : 'flex-row'"
-                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2"
-                href="/store/women"
-                @click="toggleMobileMenu"
-              >
-                <i class="fa-regular fa-clothes-hanger"></i>
-                <span>{{ phrases.header.menu.women }}</span>
-              </Link>
-              <Link
-              :class=" pageContext.data.lng == 'en' ? 'flex-row-reverse' : 'flex-row'"
-                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2"
-                href="/store/men"
-                @click="toggleMobileMenu"
-              >
-                <i class="fa-regular fa-clothes-hanger"></i>
-                <span>{{ phrases.header.menu.men }}</span>
-              </Link>
-
-              <button class="btn-back py-2" @click="toggleIsShowCategories">
-                {{ phrases.header.btnBack }}
-              </button>
-            </div>
           </div>
         </div>
-        <ul
-          class="top-menu py-3 w-100 px-lg-5 d-none d-lg-flex align-items-center"
-        >
-          <li class="dropdown">
-            <span class="main-item"> {{ phrases.header.category }} </span>
-            <img src="./../assets/images/down.svg" alt="" />
-
-            <div class="sub-menu sub-menu-p">
-              <div class="sub-menu-body d-flex">
-                <div class="border-r">
-                  <div class="blur-mode"></div>
-                </div>
-
-                <!-- <a
-                  class="box"
-                  v-for="(category, index) in categories"
-                  :key="index"
-                  :href="`/store/${category.slug}`"
-                >
-                  <div class="menu-item-icon">
-                    <img
-                      v-if="category.coverFile"
-                      class="normal-icon"
-                      :src="category.coverFile"
-                      alt=""
-                    />
-                  </div>
-                  <div class="menu-item-titles">
-                    <div class="menu-item-fa mb-2">{{ category.nameLong }}</div>
-                    <div class="menu-item-en">Trendy-Trades category</div>
-                  </div>
-                </a> -->
-                <Link href="/store/women" class="box">
-                  <div class="menu-item-icon">
-                    <img
-                      class="normal-icon"
-                      src="./../assets/images/women-clothes.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="menu-item-titles">
-                    <div class="menu-item-fa mb-1">
-                      {{ phrases.header.menu.women }}
-                    </div>
-                    <div class="menu-item-en">
-                      {{ phrases.header.menu.onlineShop }}
-                    </div>
-                  </div>
-                </Link>
-                <Link href="/store/men" class="box">
-                  <div class="menu-item-icon">
-                    <img
-                      class="normal-icon"
-                      src="./../assets/images/man-clothing.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="menu-item-titles">
-                    <div class="menu-item-fa mb-1">
-                      {{ phrases.header.menu.men }}
-                    </div>
-                    <div class="menu-item-en">
-                      {{ phrases.header.menu.onlineShop }}
-                    </div>
-                  </div>
-                </Link>
-                <!-- <a href="/store/kids" class="box">
-                  <div class="menu-item-icon">
-                    <img class="normal-icon" src="./../assets/images/kids-dress.png" alt="" />
-                  </div>
-                  <div class="menu-item-titles">
-                    <div class="menu-item-fa mb-1">Kids</div>
-                    <div class="menu-item-en">Online Shop</div>
-                  </div>
-                </a> -->
-              </div>
-            </div>
-          </li>
-
-          <li>
-            <Link class="main-item" href="/blog">
-              {{ phrases.header.menu.blog }}
-            </Link>
-          </li>
-          <li>
-            <Link class="main-item" href="/about">{{
-              phrases.header.menu.aboutUs
-            }}</Link>
-          </li>
-          <li>
-            <Link class="main-item" href="/contact">{{
-              phrases.header.menu.contactUs
-            }}</Link>
-          </li>
-        </ul>
       </header>
     </div>
   </div>
-  <Search @close-search="isSearchOpen = false" v-if="isSearchOpen" />
-  <CartSidebar />
 </template>
 
 <style lang="scss" scoped>
@@ -438,6 +309,9 @@ onBeforeUnmount(() => {
   top: 0;
   left: 0;
   right: 0;
+  width: 100% !important;
+  margin: 0;
+  padding: 0;
   z-index: 1000;
   transition: all 0.3s ease;
 }
@@ -458,8 +332,64 @@ onBeforeUnmount(() => {
 }
 
 .header-wrapper {
+  position: relative;
+  width: 100% !important;
+  margin: 0;
+  padding: 0;
   header {
-    height: 60px;
+    height: 44px;
+    width: 100% !important;
+    // @media (min-width: 992px) {
+    //   height: 50px;
+    // }
+
+    .header-content {
+      width: 100% !important;
+      padding: 0 15px;
+      position: relative;
+      margin: 0;
+
+      @media (min-width: 992px) {
+        padding: 0 2rem;
+        justify-content: space-between;
+      }
+    }
+
+    .header-left {
+      width: 60px;
+      flex-shrink: 0;
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+
+    .desktop-menu-links {
+      gap: 2rem;
+      flex: 1;
+      justify-content: flex-start;
+    }
+
+    .desktop-menu-link {
+      color: var(--third-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--primary-color);
+        text-decoration: none;
+      }
+    }
+
+    .header-right {
+      width: 60px;
+      flex-shrink: 0;
+      @media (min-width: 992px) {
+        width: unset;
+        flex-shrink: 0;
+      }
+    }
 
     .top-menu {
       gap: 1.75rem;
@@ -481,82 +411,6 @@ onBeforeUnmount(() => {
         visibility: visible;
       }
     }
-    // .sub-menu {
-    //   display: none;
-    //   visibility: hidden;
-    //   width: 100px;
-    //   position: absolute;
-    //   top: 7px;
-    //   left: -30px;
-    //   z-index: 4;
-    //   padding-top: 20px;
-    //   transform: translate(32%, 0);
-
-    //   .sub-menu-body {
-    //     position: relative;
-    //     display: flex;
-    //     flex-wrap: wrap;
-    //     width: 100%;
-    //     border-radius: var(--border-radius-md);
-    //     background: var(--background-primary-color);
-
-    //     .border-r {
-    //       position: absolute;
-    //       top: 0;
-    //       right: 0;
-    //       width: 100%;
-    //       height: 100%;
-    //       border-radius: 20px;
-    //       z-index: -1;
-    //       overflow: hidden;
-
-    //       .blur-mode {
-    //         position: absolute;
-    //         top: -50px;
-    //         right: -50px;
-    //         left: -50px;
-    //         bottom: -50px;
-    //         backdrop-filter: blur(8px);
-    //       }
-    //     }
-
-    //     .box {
-    //       display: flex;
-    //       align-items: center;
-    //       width: 100%;
-    //       height: 45px;
-    //       border-radius: var(--border-radius-lg);
-    //       transition: all 0.3s ease-in-out;
-    //       .normal-icon {
-    //         height: 40px;
-    //       }
-    //       &:hover {
-    //         background-color: rgba(27, 27, 27, 0.07);
-    //       }
-    //       .menu-item-icon {
-    //         height: 50px;
-    //         width: 50px;
-    //         display: flex;
-    //         align-items: center;
-    //         img {
-    //           width: 100%;
-    //         }
-    //       }
-    //       .menu-item-fa {
-    //         font-size: 14px;
-    //         font-weight: 600;
-    //         color: var(--text-primary-color);
-    //       }
-    //       .menu-item-en {
-    //         font-family: "mona";
-    //         font-size: 14px;
-    //         font-weight: 400;
-    //         letter-spacing: 1.1;
-    //         color: #979797;
-    //       }
-    //     }
-    //   }
-    // }
     .sub-menu {
       // filter: blur(8px);
       display: none;
@@ -638,7 +492,7 @@ onBeforeUnmount(() => {
           }
 
           .menu-item-en {
-            font-family: "mona";
+            font-family: "amiri";
             font-size: 14px;
             font-weight: 400;
             letter-spacing: 1.1;
@@ -655,10 +509,24 @@ onBeforeUnmount(() => {
     .header-logo-container {
       text-decoration: none;
       color: var(--secondary-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media (max-width: 991px) {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      @media (min-width: 992px) {
+        flex: 0 0 auto;
+        margin: 0 2rem;
+      }
     }
 
     .header-logo {
-      height: 24px;
+      height: 20px;
       // @media (min-width: 992px) {
       //   height: 28px;
       // }
@@ -754,14 +622,18 @@ onBeforeUnmount(() => {
       margin-bottom: 32px;
     }
   }
-  .desktop-search-wrapper {
-    position: relative;
-    width: 60%;
-  }
   .desktop-account-button {
     border: 1px solid var(--background-color);
     color: var(--text-primary-color);
     border-radius: var(--border-radius-xl);
+    background-color: transparent;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--primary-color);
+      color: var(--third-color);
+      border-color: var(--primary-color);
+    }
   }
 }
 
@@ -777,5 +649,39 @@ onBeforeUnmount(() => {
   left: -107%;
   min-width: 100px;
   top: 137%;
+}
+.language-button {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 992px) {
+        width: 28px;
+        height: 28px;
+      }
+}
+
+/* Ensure header takes full width and overrides Bootstrap grid constraints */
+#header {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+#header .header-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+#header header {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+#header .header-content {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 </style>

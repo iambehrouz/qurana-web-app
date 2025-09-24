@@ -135,7 +135,7 @@ html {
 
 body {
   direction: rtl;
-  font: normal 1rem yekan !important;
+  font: normal 1rem amiri !important;
   font-weight: 400;
   line-height: 1.5;
   background: #FCFAEE;
@@ -206,7 +206,7 @@ p.description {
 }
 
 .text-en {
-  font-family: "mona";
+  font-family: "amiri";
 }
 
 .title {

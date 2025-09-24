@@ -8,7 +8,7 @@
           class="col-12 d-flex flex-column gap-4 align-items-center justify-content-center mb-3 mb-lg-5"
         >
           <div class="section-title">
-            <h2>What is Trendy Trades?</h2>
+            <h2>What is Qurana?</h2>
             <span class="text-back-icon">
               <img src="../assets/images/about-section-icon.svg" alt="" />
             </span>

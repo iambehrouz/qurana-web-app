@@ -24,7 +24,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
 
 onMounted(() => {
   mobileMenu.value = document.getElementById("profileMobileMenu");
-  if (!user.value) window.location = pageContext.data.lng !== 'en' ? '/' + pageContext.data.lng + '/login' : '/login';
+  if (!user.value) window.location = pageContext.data.lng !== 'fr' ? '/' + pageContext.data.lng + '/login' : '/login';
 });
 </script>
 <template>
@@ -68,38 +68,6 @@ onMounted(() => {
                   <span class="ms-3"> {{ phrases.pages.account.menu.Profile }}</span>
                 </Link>
                 <hr />
-                <Link
-                  href="/account/orders"
-                  class="menu-item d-flex align-items-center mb-2"
-                >
-                  <img src="../../../assets/images/orders.png" />
-                  <span class="ms-3"> {{ phrases.pages.account.menu.Orders }}</span>
-                </Link>
-                <hr />
-                <Link
-                  href="/account/transactions"
-                  class="menu-item d-flex align-items-center mb-2"
-                >
-                  <img src="../../../assets/images/transaction.svg" />
-                  <span class="ms-3"> {{ phrases.pages.account.menu.Transactions }}</span>
-                </Link>
-                <hr />
-                <Link
-                  href="/account/tickets"
-                  class="menu-item d-flex align-items-center mb-2"
-                >
-                  <img src="../../../assets/images/comment.png" />
-                  <span class="ms-3">{{ phrases.pages.account.menu.Tickets }}</span>
-                </Link>
-                <hr />
-                <Link
-                  href="/account/favorites"
-                  class="menu-item d-flex align-items-center mb-2"
-                >
-                  <img src="../../../assets/images/clipboard.png" />
-                  <span class="ms-3"> {{ phrases.pages.account.menu.Favorites }}</span>
-                </Link>
-                <hr />
                 <a
                   href="/logout"
                   class="menu-item d-flex align-items-center mb-2"
@@ -134,38 +102,6 @@ onMounted(() => {
                 >
                   <img src="../../../assets/images/clipboard.png" />
                   <span class="ms-3"> {{ phrases.pages.account.menu.Profile }}</span>
-                </Link>
-                <hr />
-                <Link
-                  href="/account/orders"
-                  class="menu-item d-flex align-items-center mb-2"
-                >
-                  <img src="../../../assets/images/orders.png" />
-                  <span class="ms-3"> {{ phrases.pages.account.menu.Orders }}</span>
-                </Link>
-                <hr />
-                <Link
-                  href="/account/transactions"
-                  class="menu-item d-flex align-items-center mb-2"
-                >
-                  <img src="../../../assets/images/transaction.svg" />
-                  <span class="ms-3"> {{ phrases.pages.account.menu.Transactions }}</span>
-                </Link>
-                <hr />
-                <Link
-                  href="/account/tickets"
-                  class="menu-item d-flex align-items-center mb-2"
-                >
-                  <img src="../../../assets/images/comment.png" />
-                  <span class="ms-3">{{ phrases.pages.account.menu.Tickets }}</span>
-                </Link>
-                <hr />
-                <Link
-                  href="/account/favorites"
-                  class="menu-item d-flex align-items-center mb-2"
-                >
-                  <img src="../../../assets/images/clipboard.png" />
-                  <span class="ms-3"> {{ phrases.pages.account.menu.Favorites }}</span>
                 </Link>
                 <hr />
                 <a

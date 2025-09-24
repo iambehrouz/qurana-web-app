@@ -1,5 +1,5 @@
 export default {
-  title: "Trendy Trades",
+  title: "Qurana",
   description:
-  " Buy your clothes easily with Trendy Trades",
+  " Defend yourself without losing your identity with Qurana",
 };

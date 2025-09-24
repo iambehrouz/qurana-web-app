@@ -11,7 +11,7 @@ const pageContext = usePageContext();
 
 <template>
 
-  <a :class="$class" :href="pageContext.data.lng !== 'en' ? '/' + pageContext.data.lng + href : href
+  <a :class="$class" :href="pageContext.data.lng !== 'fr' ? '/' + pageContext.data.lng + href : href
     ">
     <slot />
   </a>

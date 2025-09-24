@@ -132,7 +132,7 @@ onMounted(async () => {
 
           <div class="modal-body">
             <div class="logo-container mb-3">
-              <img class="img-fluid" src="../assets/images/tt-logo.png" />
+              <img class="img-fluid" src="../assets/images/qurana-logo.svg" />
             </div>
 
             <form

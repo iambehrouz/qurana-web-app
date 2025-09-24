@@ -2,12 +2,11 @@
 import { onMounted } from "vue";
 import "../assets/libs/bootstrap-5.2.3-dist/css/bootstrap.rtl.min.css";
 import "../assets/fonts/fontawesome.pro.6.5.2/js/all.js";
-import "../assets/fonts/yekan/style.css";
-import "../assets/fonts/mona/style.css";
+import "../assets/fonts/amiri/style.css";
 import "../assets/fonts/orator/style.css";
 import "../assets/styles/main.scss";
 import Header from "./../components/Header.vue";
-import Footer from "./../components/Footer.vue";
+// import Footer from "./../components/Footer.vue";
 import Toast from "../components/Toast.vue";
 import { useMainStore } from "../stores/main";
 import { usePageContext } from "./usePageContext";
@@ -34,10 +33,7 @@ onMounted(() => {
   link.rel = "stylesheet";
   link.type = "text/css";
 
-  if (pageContext.data.lng == "en")
-    link.href = "/assets/libs/bootstrap-5.2.3-dist/css/bootstrap.min.css";
-  else if (pageContext.data.lng == "ar")
-    link.href = "/assets/libs/bootstrap-5.2.3-dist/css/bootstrap.rtl.min.css";
+  link.href = "/assets/libs/bootstrap-5.2.3-dist/css/bootstrap.min.css";
 
   // Append to head
   window.document.head.insertBefore(link, window.document.head.firstChild);
@@ -48,7 +44,7 @@ onMounted(() => {
   <Header />
 
   <slot />
-  <Footer />
+  <!-- <Footer /> -->
   <div class="toast-container position-fixed bottom-0 start-0 p-3">
     <Toast
       :key="index"

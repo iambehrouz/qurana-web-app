@@ -1,5 +1,5 @@
 export default {
-  title: "Personal information - Trendy Trades",
+  title: "Personal information - Qurana",
   description:
-    "Your personal information in Trendy Trades online store",
+    "Your personal information in Qurana",
 };

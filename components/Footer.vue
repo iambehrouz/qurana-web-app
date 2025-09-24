@@ -119,7 +119,7 @@ function scrollTop() {
   }
   .footer-wrapper {
     .text-en {
-      font-family: "mona";
+      font-family: "amiri";
     }
     .buttom-icons {
       width: 24px;

@@ -45,7 +45,7 @@ async function startServer() {
   //   res.send(request.data);
   // });
 
-  const lngs = ["en", "ar"];
+  const lngs = ["fr", "en"];
   const lngDefault = lngs[0];
   function extractLanguage(url) {
     let lng = lngDefault;
@@ -58,7 +58,7 @@ async function startServer() {
       if (urlSplited.indexOf(code) > -1) {
         lng = code;
         urlWithoutLng = url.replace("/" + code, "");
-        if(lng == "ar") {
+        if(lng == "en") {
           lngId = 2
         } else {
           lngId = 1

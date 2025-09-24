@@ -69,7 +69,7 @@ const searchSubmit = async () => {
 };
 const goToProduct = (id) => {
   products.value.show = false;
-  navigate(pageContext.data.lng !== 'en' ? '/' + pageContext.data.lng + "/store/product/" + id : "/store/product/" + id);
+  navigate(pageContext.data.lng !== 'fr' ? '/' + pageContext.data.lng + "/store/product/" + id : "/store/product/" + id);
 };
 onMounted(() => {
   show.value = true;
@@ -147,7 +147,7 @@ onMounted(() => {
                 />
                 <img class="img-fluid" v-else />
                 <div class="product-name">
-                  <span>{{ phrases.components.search.category }} {{ pageContext.data.lng == 'ar' && item.nameLongArabic ? item.nameLongArabic : item.nameLong }} </span>
+                  <span>{{ phrases.components.search.category }} </span>
                 </div>
               </Link>
               <a
@@ -164,7 +164,7 @@ onMounted(() => {
                 <img class="img-fluid" v-else />
 
                 <div class="product-name">
-                  <span>{{ pageContext.data.lng == 'ar' && item.nameArabic ? item.nameArabic : item.nameEnglish }} </span>
+                  <span></span>
                 </div>
               </a>
             </div>

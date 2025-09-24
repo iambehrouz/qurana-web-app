@@ -79,7 +79,7 @@ const handleSubmit = async (e) => {
 
     if (res) {
       window.location =
-        pageContext.data.lng !== "en" ? "/" + pageContext.data.lng : "/";
+        pageContext.data.lng !== "fr" ? "/" + pageContext.data.lng : "/";
     }
   }
 };

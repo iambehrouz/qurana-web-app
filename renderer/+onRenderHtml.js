@@ -25,7 +25,7 @@ async function onRenderHtml(pageContext) {
     "Demo of using Vike";
 
   const documentHtml = escapeInject`<!DOCTYPE html>
-    <html lang="en" dir="${pageContext.data.lng == 'ar' ? "rtl" : "ltr"}">
+    <html lang="en" dir="ltr">
       <head>
         <meta charset="UTF-8" />
         <link rel="icon" href="${logoUrl}" />

@@ -10,7 +10,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
     <h1 class="text-center mb-4">{{ phrases.pages.privacy.title }}</h1>
 
     <p class="text-center mb-5">
-      At Trendy Trades, your privacy is our priority. This
+      At Qurana, your privacy is our priority. This
       Privacy Policy outlines how we collect, use, and protect your personal
       information when you visit our online shop or purchase our products.
     </p>

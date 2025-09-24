@@ -1,0 +1,294 @@
+{
+  "isLtr": "",
+  "pageTitle": "Qurana",
+  "pageDescription": "Se défendre sans perdre son identité",
+  "header": {
+    "lag": "Langue",
+    "french": "Français",
+    "english": "Anglais",
+    "menu": {
+      "account": "Compte",
+      "home": "Accueil",
+      "blog": "Blog",
+      "aboutUs": "À propos de nous",
+      "contactUs": "Contactez-nous"
+    },
+    "btnBack": "Retour"
+  },
+  "footer": {
+    "join": "Rejoignez-nous",
+    "rules": "Règles et règlements",
+    "rights": "© 2025 Qurana. Tous droits réservés"
+  },
+  "components": {
+    "homePage": {
+      "heroSection": {
+        "title1": "Se défendre",
+        "title2": "sans perdre son identité",
+        "start": "Commencer"
+      },
+      "blogSection": {
+        "title": "Derniers articles de blog de Hama",
+        "seeAll": "Voir tout"
+      }
+    },
+    "profile": {
+      "home": {
+        "title": "Informations personnelles",
+        "name": "Nom complet",
+        "email": "Adresse e-mail",
+        "phone": "Numéro de téléphone",
+        "edit": "Modifier le profil",
+        "submit": "Enregistrer les modifications",
+        "cancel": "Annuler"
+      }
+    },
+    "LoginModal": {
+      "header": "Connexion / Inscription",
+      "request": "Entrez votre numéro de téléphone pour vous connecter ou vous inscrire.",
+      "phone": "Numéro de téléphone",
+      "continue": "Continuer",
+      "verify": "Entrez le code envoyé à votre téléphone. Le numéro saisi est : ",
+      "redirect": "Si ce numéro est incorrect, cliquez ici.",
+      "fullname": "Nom complet",
+      "enterCode": "Entrez le code de vérification",
+      "login": "Connexion"
+    },
+    "search": {
+      "searchPlaceHolder": "Rechercher...",
+      "noItem": "Aucun résultat trouvé !",
+      "category": "Catégorie"
+    }
+  },
+  "pages": {
+    "about": {
+      "pageTitle": "À propos de nous - Qurana",
+      "pageDescription": "Tout sur Qurana",
+      "name": "Qurana",
+      "title": "À propos de nous",
+      "subTitle": "Qurana",
+      "aboutTitle": "À propos de Qurana",
+      "aboutDescription": "Le développement d’Internet a complètement changé nos méthodes d’achat. Les avantages du shopping en ligne incitent de plus en plus de personnes à l’expérimenter chaque jour et à modifier leurs habitudes d’achat. Avec le temps, les achats en ligne se sont synchronisés avec la vitesse de la vie moderne et ont su s’adapter aux humeurs et aux besoins croissants des clients. Alors que les occupations quotidiennes réduisent les opportunités de loisirs, consacrer de longues périodes à des déplacements en ville pour acheter des besoins quotidiens perd de son sens. Ce qui est priorisé pour les gens pendant leur temps libre, c’est la détente, l’éducation, le sport, profiter de leurs intérêts personnels et soulager la fatigue quotidienne.",
+      "whyTitle": "Pourquoi Qurana ?",
+      "whyItems": {
+        "text1": "Authenticité des produits",
+        "text2": "Prix raisonnable",
+        "text3": "Livraison quotidienne",
+        "text4": "Service après-vente"
+      }
+    },
+    "contact": {
+      "pageTitle": "Informations de contact - Qurana",
+      "pageDescription": "Numéro de contact, adresse et tous les moyens de communication avec Qurana.",
+      "name": "Qurana",
+      "title": "Contactez-nous",
+      "subTitle": "Contactez-nous 24h/24 et 7j/7 par téléphone portable, mobile ou Telegram.",
+      "titleCaption": "Contacter Qurana",
+      "caption": "Chers utilisateurs, Qurana est prêt à recevoir vos critiques, suggestions et commentaires. Si vous avez des questions ou des doutes, vous pouvez d’abord lire la FAQ. Si vous ne trouvez pas votre réponse, vous pouvez nous contacter via les canaux de communication.",
+      "callTitle": "Numéro de téléphone :",
+      "emailTitle": "E-mail :",
+      "addressTitle": "Adresse :",
+      "address": "France"
+    },
+    "blog": {
+      "pageTitle": "Blogs de Qurana",
+      "pageDescription": "Blogs de Qurana",
+      "title": "Dernières nouvelles et articles",
+      "view": "vues",
+      "userReviews": "Avis des utilisateurs",
+      "rateTitle": "Évaluation",
+      "fiveStars": "5 étoiles",
+      "fourStars": "4 étoiles",
+      "threeStars": "3 étoiles",
+      "twoStars": "2 étoiles",
+      "oneStar": "1 étoile",
+      "review": "Avis de",
+      "reviewDate": "le",
+      "respond": "Réponse de",
+      "submitReview": "Soumettre votre avis",
+      "caption": "Vos coordonnées ne seront pas affichées.",
+      "submitBtn": "Envoyer"
+    },
+    "account": {
+      "menu": {
+        "Profile": "Profil",
+        "Logout": "Déconnexion"
+      }
+    },
+    "login": {
+      "pageTitle": "Connexion - Qurana",
+      "pageDescription": "Connexion à Qurana",
+      "header": "Connexion",
+      "request": "Veuillez entrer votre numéro de téléphone",
+      "phone": "Numéro de téléphone",
+      "submit": "Envoyer",
+      "cancel": "Annuler",
+      "verify": "Veuillez entrer le code de vérification envoyé à votre numéro.",
+      "enterCode": "Entrez le code envoyé à votre téléphone",
+      "login": "Connexion"
+    },
+    "privacy": {
+      "pageTitle": "Politique de confidentialité - Qurana",
+      "pageDescription": "Politique de confidentialité de Qurana",
+      "title": "Politique de confidentialité",
+      "description": "Chez Qurana, votre vie privée est notre priorité. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations personnelles lorsque vous visitez notre boutique en ligne ou achetez nos produits.",
+      "callTitle": "Téléphone :",
+      "emailTitle": "E-mail :",
+      "addressTitle": "Adresse :",
+      "address": "France",
+      "titles": {
+        "first": "Informations que nous collectons",
+        "second": "Comment nous utilisons vos informations",
+        "third": "Partage de vos informations",
+        "forth": "Cookies et suivi",
+        "fifth": "Sécurité des données",
+        "sixth": "Vos droits",
+        "seventh": "Liens vers des tiers",
+        "eighth": "Modifications de cette politique",
+        "ninth": "Contactez-nous"
+      },
+      "descriptions": {
+        "first": "Lorsque vous interagissez avec notre site web, nous pouvons collecter les types d’informations suivants :",
+        "second": "Nous utilisons vos informations aux fins suivantes :",
+        "third": "Nous ne vendons, échangeons ni ne louons vos informations personnelles à des tiers. Cependant, nous pouvons partager vos informations avec des tiers de confiance, notamment :",
+        "forth": "Nous utilisons des cookies et des technologies similaires pour améliorer votre expérience de navigation. Les cookies nous aident à mémoriser vos préférences et à suivre vos interactions avec notre site.",
+        "fifth": "Nous mettons en œuvre des mesures de sécurité avancées pour protéger vos informations personnelles contre tout accès non autorisé, modification ou divulgation. Notre site utilise le cryptage SSL pour sécuriser vos données lors des transactions.",
+        "sixth": "En tant qu’utilisateur, vous avez les droits suivants :",
+        "seventh": "Notre site peut contenir des liens vers des sites tiers. Nous ne sommes pas responsables des pratiques de confidentialité de ces sites et vous encourageons à consulter leurs politiques.",
+        "eighth": "Nous pouvons mettre à jour cette politique de confidentialité de temps en temps. Toute modification sera publiée sur cette page avec la date de mise à jour.",
+        "ninth": "Pour toute question ou préoccupation concernant ces conditions, veuillez nous contacter à :"
+      },
+      "lists": {
+        "firstListItems": {
+          "first": {
+            "title": "Informations personnelles :",
+            "text": "Nom, adresse e-mail, numéro de téléphone, adresse de livraison et détails de paiement (traités en toute sécurité via nos prestataires de paiement)."
+          },
+          "second": {
+            "title": "Informations non personnelles :",
+            "text": "Type de navigateur, type d’appareil, adresse IP et comportement de navigation sur notre site pour améliorer votre expérience d’achat."
+          }
+        },
+        "secondListItems": {
+          "first": {
+            "title": "Traitement des commandes :",
+            "text": "Pour exécuter et livrer vos commandes, fournir des factures et gérer les retours ou échanges."
+          },
+          "second": {
+            "title": "Service client :",
+            "text": "Pour répondre à vos demandes et vous fournir une assistance."
+          },
+          "third": {
+            "title": "Marketing :",
+            "text": "Pour envoyer des offres promotionnelles, des mises à jour et des newsletters si vous y avez consenti."
+          },
+          "forth": {
+            "title": "Améliorations du site :",
+            "text": "Pour analyser les tendances et améliorer la fonctionnalité et les services de notre site."
+          }
+        },
+        "thirdListItems": {
+          "first": {
+            "title": "Prestataires de paiement :",
+            "text": "Pour traiter vos paiements en toute sécurité."
+          },
+          "second": {
+            "title": "Partenaires de livraison :",
+            "text": "Pour livrer vos commandes à votre domicile."
+          },
+          "third": {
+            "title": "Autorités légales :",
+            "text": "Si la loi l’exige ou pour protéger nos droits légaux."
+          }
+        },
+        "forthListItems": {
+          "first": "Vous pouvez gérer ou désactiver les cookies dans les paramètres de votre navigateur, mais notez que cela peut affecter la fonctionnalité de notre site."
+        },
+        "sixthListItems": {
+          "first": {
+            "title": "Accès :",
+            "text": "Demander une copie des informations personnelles que nous détenons à votre sujet."
+          },
+          "second": {
+            "title": "Correction :",
+            "text": "Mettre à jour ou corriger vos informations personnelles."
+          },
+          "third": {
+            "title": "Suppression :",
+            "text": "Demander la suppression de vos données personnelles, sous réserve d’obligations légales ou contractuelles."
+          },
+          "forth": {
+            "title": "Préférences marketing :",
+            "text": "Se désabonner des communications promotionnelles en nous contactant ou en utilisant le lien de désinscription dans nos e-mails."
+          }
+        }
+      }
+    },
+    "terms": {
+      "pageTitle": "Conditions générales - Qurana",
+      "pageDescription": "Conditions générales de Qurana",
+      "title": "Conditions générales",
+      "description": "Bienvenue sur Qurana ! Ces conditions générales définissent les règles et règlements pour l’utilisation du site web de Qurana, basé à Dubaï, Émirats arabes unis.",
+      "secondDescription": "En accédant à ce site, vous acceptez ces conditions générales. Si vous n’êtes pas d’accord avec une partie quelconque de ces conditions, vous devez cesser d’utiliser notre site.",
+      "callTitle": "Téléphone :",
+      "emailTitle": "E-mail :",
+      "addressTitle": "Adresse :",
+      "address": "France",
+      "titles": {
+        "first": "Informations générales",
+        "second": "Commandes et paiements",
+        "third": "Expédition et livraison",
+        "forth": "Politique de retour et d’échange",
+        "fifth": "Authenticité des produits",
+        "sixth": "Responsabilités de l’utilisateur",
+        "seventh": "Confidentialité et protection des données",
+        "eighth": "Limitation de responsabilité",
+        "ninth": "Droit applicable",
+        "tenth": "Contactez-nous"
+      },
+      "descriptions": {
+        "first": "Qurana fonctionne comme une boutique en ligne vendant des vêtements, chaussures et sacs originaux. Tous les prix sont indiqués en AED (dirham des Émirats arabes unis) sauf indication contraire. Nous nous réservons le droit de modifier ces conditions générales à tout moment. Les changements seront mis à jour sur cette page.",
+        "second": "Les commandes peuvent être passées directement sur notre site web. Assurez-vous que toutes les informations fournies sont exactes et complètes. Les moyens de paiement incluent cartes de crédit/débit, portefeuilles numériques ou toute autre option disponible lors du paiement. Les commandes seront confirmées par e-mail une fois le paiement traité.",
+        "third": "Nous livrons dans tout le territoire des ÉAU. Les délais et frais de livraison varient en fonction de votre emplacement et de la méthode de livraison choisie. Les délais estimés sont fournis lors du paiement mais peuvent varier en raison de facteurs externes indépendants de notre volonté. Les clients sont responsables de fournir une adresse de livraison correcte et complète.",
+        "forth": "Les produits peuvent être retournés ou échangés dans les 14 jours suivant l’achat, à condition qu’ils soient inutilisés, dans leur emballage d’origine et avec toutes les étiquettes attachées. Les remboursements seront traités dans la méthode de paiement initiale sous 7 à 10 jours ouvrables après réception du produit retourné. Les articles en promotion peuvent ne pas être éligibles au retour ou à l’échange sauf indication contraire.",
+        "fifth": "Qurana garantit que tous les produits vendus sur notre site sont 100 % authentiques et proviennent de fournisseurs autorisés. Les images des produits sont fournies à titre illustratif uniquement ; les couleurs et détails peuvent légèrement varier.",
+        "sixth": "Les utilisateurs ne doivent pas utiliser notre site web à des fins illégales ou non autorisées. Toute tentative d’interférer avec le fonctionnement du site ou de compromettre la sécurité est strictement interdite.",
+        "seventh": "Toutes les données personnelles collectées via notre site sont traitées conformément à notre politique de confidentialité. Nous prenons des mesures pour protéger vos données et assurer des transactions sécurisées.",
+        "eighth": "Qurana ne peut être tenu responsable de pertes indirectes ou consécutives liées à l’utilisation de notre site ou de nos produits. Notre responsabilité est limitée à la valeur du produit acheté concerné.",
+        "ninth": "Ces conditions générales sont régies par le droit des Émirats arabes unis. Tout litige lié à l’utilisation de notre site sera résolu devant les tribunaux de Dubaï.",
+        "tenth": "Pour toute question ou préoccupation concernant ces conditions générales, veuillez nous contacter à :"
+      }
+    },
+    "refund": {
+      "pageTitle": "Conditions de remboursement - Qurana",
+      "pageDescription": "Conditions de remboursement de Qurana",
+      "title": "Politique de remboursement",
+      "description": "Chez Qurana, nous nous efforçons d’assurer la satisfaction de nos clients à chaque achat. Veuillez lire attentivement notre politique de remboursement afin de comprendre comment les retours et remboursements sont gérés en fonction de votre localisation et des conditions de commande.",
+      "contactDescription": "Pour toute question ou préoccupation concernant ces conditions, veuillez nous contacter à :",
+      "emailTitle": "E-mail :",
+      "callTitle": "Téléphone :",
+      "addressTitle": "Adresse :",
+      "address": "France",
+      "titles": {
+        "first": "Remboursement et échange pour les clients des ÉAU",
+        "second": "Remboursement pour les clients internationaux",
+        "third": "Remarques importantes",
+        "forth": "Contactez-nous"
+      },
+      "lists": {
+        "firstListItems": {
+          "first": "Si vous êtes situé aux Émirats arabes unis, vous pouvez retourner ou échanger les articles dans le délai spécifié, à condition que le produit soit inutilisé, dans son emballage d’origine et avec toutes les étiquettes attachées.",
+          "second": "Si l’article commandé est en rupture de stock, nous vous contacterons via WhatsApp pour proposer une alternative ou annuler la commande avec un remboursement complet."
+        },
+        "secondListItems": {
+          "first": "Les clients en dehors des ÉAU ne sont pas éligibles aux retours ou échanges.",
+          "second": "Si un article commandé est indisponible, nous vous contacterons via WhatsApp ou e-mail pour discuter de l’annulation de votre commande et organiser un remboursement complet."
+        },
+        "thirdListItems": {
+          "first": "Les remboursements seront traités selon la méthode de paiement initiale sous 7 à 10 jours ouvrables.",
+          "second": "Les frais de livraison ne sont pas remboursables sauf en cas d’erreur de notre part."
+        }
+      }
+    }
+  }
+}

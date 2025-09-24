@@ -141,7 +141,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
     color: var(--text-primary-color);
   }
   .member-position {
-    font-family: "mona";
+    font-family: "amiri";
     font-size: 90%;
     font-weight: normal;
     color: var(--text-secondary-color);
