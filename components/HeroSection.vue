@@ -16,7 +16,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
   <section class="hero-container">
     <!-- Mobile Layout (unchanged) -->
     <div class="mobile-layout d-lg-none">
-      <div class="container pt-5 mb-5">
+      <div class="container pt-5">
         <div class="hero-section-wrapper row">
           <div
             class="mt-4 col-12 d-flex flex-column justify-content-center align-items-center hero-section-text-wrapper"
@@ -29,7 +29,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
             </div>
           </div>
           <div
-            class="col-12 d-flex justify-content-center align-items-center hero-section-image-wrapper mb-5"
+            class="col-12 d-flex justify-content-center align-items-center hero-section-image-wrapper"
           >
             <div class="hero-section-image">
               <img src="../assets/images/muslim-women-hero.png" alt="" />
@@ -44,7 +44,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
         
         <!-- Commencer button -->
         <div class="hero-button-container d-flex justify-content-center">
-          <button class="hero-button">Commencer</button>
+          <button class="hero-button">{{ phrases.components.homePage.heroSection.start }}</button>
         </div>
       </div>
     </div>
@@ -54,8 +54,8 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
       <div class="desktop-hero">
         <!-- Text content -->
         <div class="desktop-text">
-          <h1 class="desktop-title">Se défendre</h1>
-          <h2 class="desktop-subtitle">sans perdre son identité</h2>
+          <h1 class="desktop-title">{{ phrases.components.homePage.heroSection.title1 }}</h1>
+          <h2 class="desktop-subtitle">{{ phrases.components.homePage.heroSection.title2 }}</h2>
         </div>
         
         <!-- Visual elements -->
@@ -84,7 +84,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
         
         <!-- Commencer button -->
         <div class="desktop-button-container">
-          <button class="desktop-button">Commencer</button>
+          <button class="desktop-button">{{ phrases.components.homePage.heroSection.start }}</button>
         </div>
       </div>
     </div>
@@ -96,7 +96,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
 .mobile-layout {
   .container {
     position: relative;
-    height: calc(100vh - 44px);
+    height: calc(100vh - 54px);
     &:after {
       content: "";
       display: block;
@@ -128,6 +128,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
       }
       .hero-section-image-wrapper {
         margin-top: -20px;
+        margin-bottom: 30px;
 
         .hero-section-image {
           img {
@@ -178,11 +179,11 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
 .desktop-layout {
   .desktop-hero {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100vh - 85px);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 4rem;
+    padding: 0 4rem;
     background: linear-gradient(180deg, #ffffff 0%, #ffffff 60%, #FFA958 100%);
     overflow: hidden;
     
@@ -194,7 +195,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
       left: 0;
       right: 0;
       height: 35%;
-      background: linear-gradient(180deg, #72227D 0%, #8B2A8B 30%, #FF6B35 70%, #FFA958 100%);
+      background: linear-gradient(180deg, #72227D 0%, #FFA958 100%);
       z-index: 0;
     }
   }
@@ -264,8 +265,8 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
   
   .desktop-button-container {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
+    bottom: 20%;
+    left: 20%;
     transform: translateX(-50%);
     z-index: 2;
   }

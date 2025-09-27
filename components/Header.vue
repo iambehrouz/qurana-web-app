@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { usePageContext } from "../renderer/usePageContext";
 import axios from "axios";
 import config from "../config.json";
@@ -11,7 +11,15 @@ const isShowCategories = ref(false);
 const isShowProducts = ref(false);
 const isShowLanguages = ref(false);
 const pageContext = usePageContext();
+const user = ref(pageContext.data.user);
 const phrases = langauges.getPhrases(pageContext.data.lng);
+
+watch(
+  () => pageContext.data.user,
+  () => {
+    user.value = pageContext.data.user;
+  }
+);
 
 function toggleMobileMenu() {
   isActive.value = !isActive.value;
@@ -82,9 +90,9 @@ onBeforeUnmount(() => {
             <Link class="desktop-menu-link" href="/">
               {{ phrases.header.menu.home }}
             </Link>
-            <Link class="desktop-menu-link" href="/blog">
+            <!-- <Link class="desktop-menu-link" href="/blog">
               {{ phrases.header.menu.blog }}
-            </Link>
+            </Link> -->
             <Link class="desktop-menu-link" href="/about">
               {{ phrases.header.menu.aboutUs }}
             </Link>
@@ -197,29 +205,46 @@ onBeforeUnmount(() => {
 
           <div class="back d-none" @click="toggleMobileMenu"></div>
 
-          <div :class="{ active: isActive }" class="mobile-menu">
+          <div :class="{ active: isActive }" class="mobile-menu pt-5">
             <!-- modal img  -->
-            <Link href="/">
+            <Link href="/" v-if="!user" class="header-logo-menu-container d-flex align-items-center justify-content-center mb-4 pb-4 mt-5">
               <img
-                class="header-logo-menu mb-4"
-                src="./../assets/images/qurana-logo.svg"
+                class="header-logo-menu"
+                src="./../assets/images/qurana-logo-primary.svg"
                 alt="Qurana"
               />
             </Link>
 
             <!-- accocunt  -->
-            <Link
+            <!-- <Link
               href="/account"
               class="cta d-flex gap-2 align-items-center justify-content-center py-3 px-4"
               @click="toggleMobileMenu"
             >
               <i class="fa-solid fa-user-vneck"></i>
               <span>{{ phrases.header.menu.account }}</span>
-            </Link>
-            <div v-if="!isShowCategories && !isShowProducts" dir="rtl">
+            </Link> -->
+            <div v-if="user"
+              class="profile-user d-flex align-items-center justify-content-center mb-3 mt-5"
+            >
+              <i class="fa-solid fa-user-vneck"></i>
+            </div>
+            <div v-if="user && user.fullname" class="profile-name pb-4 mb-4">
+              <h1>{{ user.fullname }}</h1>
+            </div>
+
+            <div dir="rtl">
               <!-- links -->
               <Link
-                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2 flex-row-reverse"
+                class="d-flex align-items-center pb-3 gap-3 mb-2 flex-row-reverse"
+                href="/account"
+                @click="toggleMobileMenu"
+              >
+                <i class="fa-solid fa-user-vneck"></i>
+                <span>{{ user ? phrases.header.menu.profile : phrases.header.menu.signInUp }}</span>
+              </Link>
+              <Link
+                class="d-flex align-items-center pb-3 gap-3 mb-2 flex-row-reverse"
                 href="/"
                 @click="toggleMobileMenu"
               >
@@ -227,16 +252,16 @@ onBeforeUnmount(() => {
                 <span>{{ phrases.header.menu.home }}</span>
               </Link>
 
-              <Link
-                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2 flex-row-reverse"
+              <!-- <Link
+                class="d-flex align-items-center pb-3 gap-3 mb-2 flex-row-reverse"
                 href="/blog"
                 @click="toggleMobileMenu"
               >
                 <img src="../assets/images/pencil-fill.svg" alt="" />
                 <span> {{ phrases.header.menu.blog }}</span>
-              </Link>
+              </Link> -->
               <Link
-                class="d-flex align-items-center border-bottom pb-3 gap-3 mb-2 flex-row-reverse"
+                class="d-flex align-items-center pb-3 gap-3 mb-2 flex-row-reverse"
                 href="/about"
                 @click="toggleMobileMenu"
               >
@@ -244,7 +269,7 @@ onBeforeUnmount(() => {
                 <span>{{ phrases.header.menu.aboutUs }}</span>
               </Link>
               <Link
-                class="call-us d-flex align-items-center border-bottom pb-3 gap-3 flex-row-reverse"
+                class="call-us d-flex align-items-center pb-3 gap-3 flex-row-reverse"
                 href="/contact"
                 @click="toggleMobileMenu"
               >
@@ -254,7 +279,7 @@ onBeforeUnmount(() => {
 
               <!-- email  -->
 
-              <a
+              <!-- <a
                 target="_blank"
                 href="info@trendytrades.io"
                 class="email-info d-block"
@@ -262,11 +287,11 @@ onBeforeUnmount(() => {
               >
                 <img class="me-2" src="./../assets/images/mail-b.svg" alt="" />
                 <span>info@trendytrades.io</span>
-              </a>
+              </a> -->
 
               <!-- social media  -->
 
-              <a href="#" target="_blank" @click="toggleMobileMenu">
+              <!-- <a href="#" target="_blank" @click="toggleMobileMenu">
                 <img
                   class="soical-icon-mobile me-2"
                   src="../assets/images/whatsapp.svg"
@@ -293,7 +318,7 @@ onBeforeUnmount(() => {
                   src="../assets/images/linkedin-black.svg"
                   alt="linkedin"
                 />
-              </a>
+              </a> -->
             </div>
           </div>
         </div>
@@ -373,7 +398,7 @@ onBeforeUnmount(() => {
       color: var(--third-color);
       text-decoration: none;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 100%;
       transition: color 0.3s ease;
 
       &:hover {
@@ -532,7 +557,7 @@ onBeforeUnmount(() => {
       // }
     }
     .header-logo-menu {
-      height: 45px;
+      height: 30px;
     }
 
     .cta:link,
@@ -569,8 +594,8 @@ onBeforeUnmount(() => {
     text-align: center;
     background-color: white;
     top: 0;
-    right: 0;
-    transform: translateX(100%);
+    left: 0;
+    transform: translateX(-100%);
     transition: all 0.5s ease-in-out;
 
     .soical-icon-mobile {
@@ -604,6 +629,30 @@ onBeforeUnmount(() => {
     a {
       color: #0e0f0e;
       text-decoration: none;
+    }
+    .profile-user {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #72227d 0%, #ffa958 100%);
+      font-size: 140%;
+      color: #fff;
+      text-align: center;
+    }
+    .profile-name {
+      text-align: left;
+      h1 {
+        font-size: 100%;
+        color: #000;
+        font-weight: 800;
+      }
+      border-bottom: 1px solid var(--secondary-color);
+    }
+    .header-logo-menu-container {
+      border-bottom: 1px solid var(--secondary-color);
     }
   }
 
@@ -659,9 +708,9 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   @media (min-width: 992px) {
-        width: 28px;
-        height: 28px;
-      }
+    width: 28px;
+    height: 28px;
+  }
 }
 
 /* Ensure header takes full width and overrides Bootstrap grid constraints */

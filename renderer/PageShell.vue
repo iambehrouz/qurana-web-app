@@ -6,7 +6,7 @@ import "../assets/fonts/amiri/style.css";
 import "../assets/fonts/orator/style.css";
 import "../assets/styles/main.scss";
 import Header from "./../components/Header.vue";
-// import Footer from "./../components/Footer.vue";
+import Footer from "./../components/Footer.vue";
 import Toast from "../components/Toast.vue";
 import { useMainStore } from "../stores/main";
 import { usePageContext } from "./usePageContext";
@@ -44,7 +44,7 @@ onMounted(() => {
   <Header />
 
   <slot />
-  <!-- <Footer /> -->
+  <Footer />
   <div class="toast-container position-fixed bottom-0 start-0 p-3">
     <Toast
       :key="index"

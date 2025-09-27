@@ -8,6 +8,8 @@
     "english": "English",
     "menu": {
       "account": "Account",
+      "signInUp": "Sign In / Sign Up",
+      "profile": "Profile",
       "home": "Home",
       "blog": "Blog",
       "aboutUs": "About Us",
