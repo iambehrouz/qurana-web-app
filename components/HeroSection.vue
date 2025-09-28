@@ -44,7 +44,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
         
         <!-- Commencer button -->
         <div class="hero-button-container d-flex justify-content-center">
-          <button class="hero-button">{{ phrases.components.homePage.heroSection.start }}</button>
+          <Link href="/register/step-one" class="hero-button">{{ phrases.components.homePage.heroSection.start }}</Link>
         </div>
       </div>
     </div>
@@ -84,7 +84,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
         
         <!-- Commencer button -->
         <div class="desktop-button-container">
-          <button class="desktop-button">{{ phrases.components.homePage.heroSection.start }}</button>
+          <Link href="/register/step-one" class="desktop-button">{{ phrases.components.homePage.heroSection.start }}</Link>
         </div>
       </div>
     </div>

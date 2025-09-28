@@ -129,6 +129,39 @@
       "enterCode": "Entrez le code envoyé à votre téléphone",
       "login": "Connexion"
     },
+    "register": {
+      "stepOne": {
+        "signUp": "S'inscrire",
+        "firstName": "Prénom",
+        "firstNamePlaceholder": "entrez votre nom",
+        "lastName": "Nom de famille",
+        "lastNamePlaceholder": "entrez votre famille",
+        "email": "E-mail",
+        "emailPlaceholder": "saisissez votre adresse e-mail",
+        "age": "Âge",
+        "agePlaceholder": "entrez votre âge",
+        "terms": "J'accepte les termes et conditions",
+        "submit": "Étape suivante"
+      },
+      "stepTwo": {
+        "title": "Quand êtes-vous disponible ?",
+        "monday": "Lundi",
+        "tuesday": "Mardi",
+        "wednesday": "Mercredi",
+        "thursday": "Jeudi",
+        "friday": "Vendredi",
+        "saturday": "Samedi",
+        "sunday": "Dimanche",
+        "submit": "Étape suivante"
+      },
+      "stepThree": {
+        "title": "Votre expérience",
+        "beginner": "Débutant",
+        "intermediate": "Intermédiaire",
+        "expert": "Experte",
+        "submit": "Étape suivante"
+      }
+    },
     "privacy": {
       "pageTitle": "Politique de confidentialité - Qurana",
       "pageDescription": "Politique de confidentialité de Qurana",

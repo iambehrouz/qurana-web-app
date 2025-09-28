@@ -12,7 +12,7 @@ function scrollTop() {
 </script>
 
 <template>
-  <footer class="footer py-2">
+  <footer class="footer py-2" id="footer-wrapper">
     <div>
       <div class="footer-wrapper container px-1 px-sm-4 px-lg-5">
         <div class="container-fluid pt-3 py-lg-2 px-lg-5">
@@ -62,7 +62,30 @@ function scrollTop() {
 </template>
 
 <style lang="scss" scoped>
-.footer {
+.darkFooter {
+    background-image: url(../assets/images/footer-shape-dark.svg) !important;
+    p{
+      // display: none !important;
+      color: #fff !important;
+    }
+    h1{
+      // margin-top: 15px;
+      // margin-bottom: 10px !important;
+      color: #fff !important;
+    }
+    .footer-icon {
+      background-color: #72227D !important;
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+    .footer-icon-text {
+      p {
+        color: #72227D !important;
+      }
+    }
+  }
+#footer-wrapper {
   margin-top: -66px;
   background-image: url(../assets/images/footer-shape.svg);
   background-size: cover;

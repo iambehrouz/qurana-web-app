@@ -10,7 +10,6 @@ const onBeforeRender = async (pageContext) => {
   return {
     pageContext: {
       data: {
-        storeCategory: pageContext.data.storeCategory,
         lng: pageContext.data.lng,
         lngId: pageContext.data.lngId,
         title,
