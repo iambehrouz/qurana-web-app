@@ -32,7 +32,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
             class="col-12 d-flex justify-content-center align-items-center hero-section-image-wrapper"
           >
             <div class="hero-section-image">
-              <img src="../assets/images/muslim-women-hero.png" alt="" />
+              <img src="../assets/images/muslim-women-hero.svg" alt="" />
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
           <!-- Muslim women image -->
           <img 
             class="desktop-women-image" 
-            src="../assets/images/muslim-women-hero.png" 
+            src="../assets/images/muslim-women-hero.svg" 
             alt="Muslim women" 
           />
           
@@ -106,7 +106,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
       right: 0;
       width: 100%;
       height: 100%;
-      background-image: url(../assets/images/hero-linear.png);
+      background-image: url(../assets/images/hero-linear.svg);
       background-repeat: no-repeat;
       background-position: bottom center;
       background-size: contain;
@@ -127,8 +127,8 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
         }
       }
       .hero-section-image-wrapper {
-        margin-top: -20px;
-        margin-bottom: 30px;
+        margin-top: -72px;
+        margin-bottom: 0;
 
         .hero-section-image {
           img {
