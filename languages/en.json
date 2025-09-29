@@ -160,6 +160,22 @@
         "intermediate": "Intermediate",
         "expert": "Expert",
         "submit": "Next Step"
+      },
+      "stepFour": {
+        "title": "Your favorite verse?",
+        "verse1": "In the name of Allah, the Most Gracious, the Most Merciful. (Surah Al-Fatiha, 1)",
+        "verse2": "Indeed, with hardship comes ease. (Surah Ash-Sharh, 6)",
+        "verse3": "Allah is the Light of the heavens and the earth. (Surah An-Nur, 35)",
+        "verse4": "Indeed, Allah is with the patient. (Surah Al-Baqarah, 153)",
+        "submit": "Next Step"
+      },
+      "stepFive": {
+        "title": "Your favorite hadith?",
+        "hadith1": "The best among you are those who learn the Qur’an and teach it.",
+        "hadith2": "Actions are judged only by intentions.",
+        "hadith3": "Whoever follows a path in pursuit of knowledge, Allah will make easy for him a path to Paradise.",
+        "hadith4": "A Muslim is the one from whose tongue and hand other Muslims are safe.",
+        "submit": "Next Step"
       }
     },
     "privacy": {

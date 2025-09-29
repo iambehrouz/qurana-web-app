@@ -79,7 +79,7 @@ onMounted(() => {
         alt="Register Top Image"
       />
     </div>
-    <div class="register-box container px-4">
+    <div class="register-box container">
       <form class="availability-form m-0 p-0" @submit="handleSubmit">
         <h1 class="form-title">
           {{ phrases.pages.register.stepTwo.title }}
@@ -105,7 +105,7 @@ onMounted(() => {
                 ]"
                 @click="selectTimeSlot(day.key, timeSlot.id)"
               >
-                {{ timeSlot.label }}
+                <span>{{ timeSlot.label }}</span>
               </button>
             </div>
           </div>
@@ -233,7 +233,7 @@ onMounted(() => {
         .time-slot-button {
           color: #333;
           border: none;
-          padding: 12px 16px;
+          padding: 12px 5px;
           font-family: "sans-serif", sans-serif;
           font-size: 0.9rem;
           cursor: pointer;
@@ -241,6 +241,10 @@ onMounted(() => {
           flex: 1;
           position: relative;
           // border-right: 1px solid #d0d0d0;
+           span {
+              padding: 5px 2px;
+              border-radius: 5px;
+            }
 
           &:last-child {
             border-right: none;
@@ -251,8 +255,11 @@ onMounted(() => {
           }
 
           &.selected {
-            background-color: #ff6b35;
+            background-color: transparent;
+            span {
+              background-color: #ff6b35;
             color: white;
+            }
           }
 
           &:not(:last-child)::after {
@@ -267,9 +274,9 @@ onMounted(() => {
             z-index: 1;
           }
 
-          &.selected:not(:last-child)::after {
-            background-color: rgba(255, 255, 255, 0.3);
-          }
+          // &.selected:not(:last-child)::after {
+          //   background-color: rgba(255, 255, 255, 0.3);
+          // }
         }
       }
     }
@@ -328,8 +335,12 @@ onMounted(() => {
 
         .time-slots-block {
           .time-slot-button {
-            padding: 10px 4px;
+            padding: 10px 2px;
             font-size: 0.7rem;
+            span {
+              padding: 5px 2px !important;
+              border-radius: 5px;
+            }
           }
         }
       }

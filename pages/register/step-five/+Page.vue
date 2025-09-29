@@ -13,17 +13,18 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
 
 const store = useMainStore();
 const registerForm = ref({
-  experience: "expert", // Default to expert as shown in image
+  hadith: 'hadith1', // Default to hadith1 as shown in image (selected)
 });
 
-const experienceOptions = [
-  { key: "beginner", label: "beginner" },
-  { key: "intermediate", label: "intermediate" },
-  { key: "expert", label: "expert" },
+const hadithOptions = [
+  { key: 'hadith1', label: 'hadith1' },
+  { key: 'hadith2', label: 'hadith2' },
+  { key: 'hadith3', label: 'hadith3' },
+  { key: 'hadith4', label: 'hadith4' }
 ];
 
-const selectExperience = (experience) => {
-  registerForm.value.experience = experience;
+const selectHadith = (hadith) => {
+  registerForm.value.hadith = hadith;
 };
 
 const handleSubmit = async (e) => {
@@ -33,7 +34,7 @@ const handleSubmit = async (e) => {
 };
 
 const handleCancel = () => {
-  registerForm.value.experience = "expert";
+  registerForm.value.hadith = 'hadith1';
 };
 
 onMounted(() => {
@@ -52,32 +53,32 @@ onMounted(() => {
         alt="Register Top Image"
       />
     </div>
-    <div class="register-box container pt-4 pb-0">
-      <form class="experience-form m-0 p-0" @submit="handleSubmit">
+    <div class="register-box container px-4">
+      <form class="verse-form p-0 m-0" @submit="handleSubmit">
         <h1 class="form-title">
-          {{ phrases.pages.register.stepThree.title }}
+          {{ phrases.pages.register.stepFive.title }}
         </h1>
 
-        <div class="experience-options">
-          <div
-            v-for="option in experienceOptions"
-            :key="option.key"
-            class="experience-option"
-            :class="{ selected: registerForm.experience === option.key }"
-            @click="selectExperience(option.key)"
+        <div class="verse-options">
+          <div 
+            v-for="option in hadithOptions" 
+            :key="option.key" 
+            class="verse-option p-0"
+            :class="{ 'selected': registerForm.hadith === option.key }"
+            @click="selectHadith(option.key)"
           >
-            <div class="selection-indicator">
+            <div class="selection-indicator m-0">
               <div class="indicator-inner"></div>
             </div>
-            <div class="option-label text-center">
-              {{ phrases.pages.register.stepThree[option.label] }}
+            <div class="verse-text">
+              {{ phrases.pages.register.stepFive[option.label] }}
             </div>
           </div>
         </div>
 
         <div class="container-fluid px-0 text-center submit-button" >
-          <Link href="/register/step-four">
-          {{ phrases.pages.register.stepOne.submit }}
+          <Link href="/register/step-five">
+          {{ phrases.pages.register.stepFive.submit }}
         </Link>
         </div>
       </form>
@@ -86,10 +87,15 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+body {
+  background: #fff !important;
+  background-image: none !important;
+}
 .register-page {
+
   margin-bottom: 70px;
   background-color: #fff;
-  min-height: calc(100vh - 122px);
+  min-height: calc(100vh - 53px);
   @media (min-width: 992px) {
     min-height: calc(100vh - 183px);
   }
@@ -107,14 +113,14 @@ onMounted(() => {
 
   .register-box {
     margin-top: 0;
-    max-width: 500px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     padding: 40px 20px;
   }
 }
 
-.experience-form {
+.verse-form {
   // background-color: #fff;
   // padding: 40px;
   // border-radius: 8px;
@@ -129,92 +135,70 @@ onMounted(() => {
     text-align: center;
   }
 
-  .experience-options {
+  .verse-options {
     margin-bottom: 40px;
 
-    .experience-option {
-      &:nth-child(1) {
-        .selection-indicator,
-        .option-label {
-          background-color: #ebd9f5 !important;
-        }
-      }
-
-      &:nth-child(2) {
-        .selection-indicator,
-        .option-label {
-          background-color: #dcbaed !important;
-        }
-      }
-
-      &:nth-child(3) {
-        .selection-indicator,
-        .option-label {
-          background-color: #c791e1 !important;
-        }
-      }
+    .verse-option {
       display: flex;
-      align-items: center;
-      margin-bottom: 15px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      gap: 15px;
       cursor: pointer;
       transition: all 0.3s ease;
 
       .selection-indicator {
         width: 40px;
         height: 40px;
-        // background-color: #e8d5f2;
-        border-radius: 4px;
-        margin-right: 15px;
+        // border: 2px solid #ff6b35;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
         transition: all 0.3s ease;
+        // padding: 15px;
+        background-color: #fff;
+        // border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
         .indicator-inner {
-          width: 15px;
-          height: 15px;
+          width: 16px;
+          height: 16px;
           // background-color: #8e44ad;
-          border: 1px solid #fff;
-          border-radius: 2px;
+          border-radius: 3px;
+          border: 1px solid var(--primary-color);
         }
       }
 
-      .option-label {
+      .verse-text {
         flex: 1;
-        padding: 15px 20px;
-        // background-color: #f8f4ff;
+        padding: 10px;
+        background-color: #fff;
         border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         font-family: "sans-serif", sans-serif;
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: #333;
-        font-weight: 500;
+        line-height: 1.6;
+        font-weight: 400;
         transition: all 0.3s ease;
       }
 
       &.selected {
-        // .selection-indicator {
-        //   background-color: #e8d5f2;
-        // }
-
-        // .option-label {
-        //   background-color: #d4a5f0;
-        //   color: #333;
-        // }
-        .indicator-inner {
+        .selection-indicator {
+          .indicator-inner {
+            border-color: #8e44ad;
           background-color: #8e44ad;
-          border-color: #8e44ad;
+          }
         }
       }
 
-      // &:hover {
-      //   .option-label {
-      //     background-color: #f0e6ff;
-      //   }
-
-      //   &.selected .option-label {
-      //     background-color: #d4a5f0;
-      //   }
-      // }
+      &:hover {
+        .verse-text {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+      }
     }
   }
 
@@ -246,7 +230,7 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
-  .experience-form {
+  .verse-form {
     padding: 30px 20px;
     margin: 0 10px;
 
@@ -255,11 +239,18 @@ onMounted(() => {
       margin-bottom: 30px;
     }
 
-    .experience-options {
-      .experience-option {
-        .option-label {
-          padding: 12px 15px;
-          font-size: 0.9rem;
+    .verse-options {
+      .verse-option {
+        padding: 15px;
+        
+        .selection-indicator {
+          width: 40px;
+          height: 40px;
+          margin-right: 15px;
+        }
+
+        .verse-text {
+          font-size: 0.8rem;
         }
       }
     }
