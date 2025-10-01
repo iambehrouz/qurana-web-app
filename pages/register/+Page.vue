@@ -217,7 +217,7 @@ onMounted(() => {
     <div class="top-image w-100">
       <img
         class="img-fluid"
-        src="../../../assets/images/register-stepone-back.svg"
+        src="../../assets/images/register-stepone-back.svg"
         alt="Register Top Image"
       />
     </div>
@@ -226,7 +226,7 @@ onMounted(() => {
         <div class="video-wrapper w-100 mb-3">
           <video
             class="w-100"
-            src="../../../assets/images/test-video.mp4"
+            src="../../assets/images/test-video.mp4"
             controls
             muted
             autoplay
@@ -374,7 +374,7 @@ onMounted(() => {
         <div class="video-wrapper w-100 mb-3">
           <video
             class="w-100"
-            src="../../../assets/images/test-video.mp4"
+            src="../../assets/images/test-video.mp4"
             controls
             muted
             autoplay
@@ -414,7 +414,7 @@ onMounted(() => {
         <div class="video-wrapper w-100 mb-3">
           <video
             class="w-100"
-            src="../../../assets/images/test-video.mp4"
+            src="../../assets/images/test-video.mp4"
             controls
             muted
             autoplay
