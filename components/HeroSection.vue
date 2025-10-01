@@ -19,7 +19,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
       <div class="container pt-5">
         <div class="hero-section-wrapper row">
           <div
-            class="mt-4 col-12 d-flex flex-column justify-content-center align-items-center hero-section-text-wrapper"
+            class="mt-3 col-12 d-flex flex-column justify-content-center align-items-center hero-section-text-wrapper"
           >
             <div class="hero-section-title">
               <h1 class="text-start mb-0">
@@ -31,20 +31,22 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
           <div
             class="col-12 d-flex justify-content-center align-items-center hero-section-image-wrapper"
           >
-            <div class="hero-section-image">
+            <div class="hero-section-image d-flex justify-content-center">
               <img src="../assets/images/muslim-women-hero.svg" alt="" />
             </div>
           </div>
         </div>
-        
+
         <!-- Star icon -->
         <div class="hero-star">
           <img src="../assets/images/star-shape.svg" alt="Star" />
         </div>
-        
+
         <!-- Commencer button -->
         <div class="hero-button-container d-flex justify-content-center">
-          <Link href="/register/step-one" class="hero-button">{{ phrases.components.homePage.heroSection.start }}</Link>
+          <Link href="/register" class="hero-button">{{
+            phrases.components.homePage.heroSection.start
+          }}</Link>
         </div>
       </div>
     </div>
@@ -54,37 +56,43 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
       <div class="desktop-hero">
         <!-- Text content -->
         <div class="desktop-text">
-          <h1 class="desktop-title">{{ phrases.components.homePage.heroSection.title1 }}</h1>
-          <h2 class="desktop-subtitle">{{ phrases.components.homePage.heroSection.title2 }}</h2>
+          <h1 class="desktop-title">
+            {{ phrases.components.homePage.heroSection.title1 }}
+          </h1>
+          <h2 class="desktop-subtitle">
+            {{ phrases.components.homePage.heroSection.title2 }}
+          </h2>
         </div>
-        
+
         <!-- Visual elements -->
         <div class="desktop-visual">
           <!-- Muslim women image -->
-          <img 
-            class="desktop-women-image" 
-            src="../assets/images/muslim-women-hero.svg" 
-            alt="Muslim women" 
+          <img
+            class="desktop-women-image"
+            src="../assets/images/muslim-women-hero.svg"
+            alt="Muslim women"
           />
-          
+
           <!-- Purple crescent moon -->
           <!-- <img 
             class="desktop-crescent" 
             src="../assets/images/hero-linear.svg" 
             alt="Crescent moon" 
           /> -->
-          
+
           <!-- Star icon -->
-          <img 
-            class="desktop-star" 
-            src="../assets/images/star-shape.svg" 
-            alt="Star" 
+          <img
+            class="desktop-star"
+            src="../assets/images/star-shape.svg"
+            alt="Star"
           />
         </div>
-        
+
         <!-- Commencer button -->
         <div class="desktop-button-container">
-          <Link href="/register/step-one" class="desktop-button">{{ phrases.components.homePage.heroSection.start }}</Link>
+          <Link href="/register" class="desktop-button">{{
+            phrases.components.homePage.heroSection.start
+          }}</Link>
         </div>
       </div>
     </div>
@@ -133,11 +141,14 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
         .hero-section-image {
           img {
             width: 100%;
+            @media (min-width: 360px) {
+              width: 90%;
+            }
           }
         }
       }
     }
-    
+
     .hero-star {
       position: absolute;
       top: 23%;
@@ -145,28 +156,28 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
       width: 50px;
       height: 50px;
       z-index: 2;
-      
+
       img {
         width: 100%;
         height: 100%;
       }
     }
-    
+
     .hero-button-container {
       z-index: 2;
     }
-    
+
     .hero-button {
       background-color: #fff;
       color: var(--secondary-color);
       border: none;
-      padding: .3rem 5.5rem;
+      padding: 0.3rem 5.5rem;
       border-radius: 8px;
       font-size: 1.1rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s ease;
-      
+
       &:hover {
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(114, 34, 125, 0.2);
@@ -184,9 +195,9 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
     align-items: center;
     justify-content: space-between;
     padding: 0 4rem;
-    background: linear-gradient(180deg, #ffffff 0%, #ffffff 60%, #FFA958 100%);
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 60%, #ffa958 100%);
     overflow: hidden;
-    
+
     // Bottom gradient
     &::after {
       content: "";
@@ -195,36 +206,36 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
       left: 0;
       right: 0;
       height: 35%;
-      background: linear-gradient(180deg, #72227D 0%, #FFA958 100%);
+      background: linear-gradient(180deg, #72227d 0%, #ffa958 100%);
       z-index: 0;
     }
   }
-  
+
   .desktop-text {
     flex: 1;
     z-index: 2;
     position: relative;
     padding-right: 2rem;
   }
-  
+
   .desktop-title {
     font-size: 4rem;
     font-weight: bold;
-    color: #72227D;
+    color: #72227d;
     margin: 0;
     line-height: 1.1;
     font-family: serif;
   }
-  
+
   .desktop-subtitle {
     font-size: 2.5rem;
     font-weight: normal;
-    color: #72227D;
+    color: #72227d;
     margin: 0.5rem 0 0 0;
     line-height: 1.1;
     font-family: serif;
   }
-  
+
   .desktop-visual {
     flex: 1;
     position: relative;
@@ -233,7 +244,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
     align-items: center;
     justify-content: center;
   }
-  
+
   .desktop-women-image {
     position: absolute;
     top: 50%;
@@ -243,7 +254,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
     height: auto;
     z-index: 2;
   }
-  
+
   .desktop-crescent {
     position: absolute;
     top: 50%;
@@ -253,7 +264,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
     height: auto;
     z-index: 1;
   }
-  
+
   .desktop-star {
     position: absolute;
     top: 20%;
@@ -262,7 +273,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
     height: 60px;
     z-index: 3;
   }
-  
+
   .desktop-button-container {
     position: absolute;
     bottom: 20%;
@@ -270,10 +281,10 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
     transform: translateX(-50%);
     z-index: 2;
   }
-  
+
   .desktop-button {
     background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
-    color: #72227D;
+    color: #72227d;
     border: none;
     padding: 1rem 2rem;
     border-radius: 8px;
@@ -281,7 +292,7 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    
+
     &:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(114, 34, 125, 0.2);

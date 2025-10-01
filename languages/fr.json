@@ -130,14 +130,11 @@
       "login": "Connexion"
     },
     "register": {
+      "back": "Retour",
       "stepOne": {
-        "signUp": "S'inscrire",
-        "firstName": "Prénom",
-        "firstNamePlaceholder": "entrez votre nom",
-        "lastName": "Nom de famille",
-        "lastNamePlaceholder": "entrez votre famille",
-        "email": "E-mail",
-        "emailPlaceholder": "saisissez votre adresse e-mail",
+        "signUp": "Entrez vos informations",
+        "fullname": "Nom complet",
+        "fullnamePlaceholder": "entrez votre nom complet",
         "age": "Âge",
         "agePlaceholder": "entrez votre âge",
         "terms": "J'accepte les termes et conditions",
@@ -158,7 +155,7 @@
         "title": "Votre expérience",
         "beginner": "Débutant",
         "intermediate": "Intermédiaire",
-        "expert": "Experte",
+        "advanced": "Experte",
         "submit": "Étape suivante"
       },
       "stepFour": {
@@ -176,6 +173,30 @@
         "hadith3": "Whoever follows a path in pursuit of knowledge, Allah will make easy for him a path to Paradise.",
         "hadith4": "A Muslim is the one from whose tongue and hand other Muslims are safe.",
         "submit": "Étape suivante"
+      },
+      "stepSix": {
+        "title": "Avec combien de personnes souhaiteriez-vous réaliser ce défi ?",
+        "onePerson": "1 personne",
+        "twoPerson": "2 personnes",
+        "fourPerson": "4 personnes",
+        "cityTitle": "Choisissez votre ville",
+        "submit": "Étape suivante"
+      },
+      "stepSeven": {
+        "signUp": "Complétez votre profil",
+        "email": "E-mail",
+        "emailPlaceholder": "Entrez votre e-mail",
+        "phone": "Téléphone",
+        "phonePlaceholder": "Entrez votre numéro de téléphone",
+        "password": "Mot de passe",
+        "passwordPlaceholder": "Entrez votre mot de passe",
+        "passwordverify": "Confirmez le mot de passe",
+        "passwordverifyPlaceholder": "Entrez à nouveau votre mot de passe",
+        "submit": "Étape suivante"
+      },
+      "stepEight": {
+        "verification": "Veuillez entrer le code de vérification envoyé à votre e-mail",
+        "submit": "Valider"
       }
     },
     "privacy": {

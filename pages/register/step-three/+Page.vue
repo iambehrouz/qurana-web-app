@@ -13,13 +13,13 @@ const phrases = langauges.getPhrases(pageContext.data.lng);
 
 const store = useMainStore();
 const registerForm = ref({
-  experience: "expert", // Default to expert as shown in image
+  experience: "advanced", // Default to expert as shown in image
 });
 
 const experienceOptions = [
   { key: "beginner", label: "beginner" },
   { key: "intermediate", label: "intermediate" },
-  { key: "expert", label: "expert" },
+  { key: "advanced", label: "advanced" },
 ];
 
 const selectExperience = (experience) => {
@@ -33,7 +33,7 @@ const handleSubmit = async (e) => {
 };
 
 const handleCancel = () => {
-  registerForm.value.experience = "expert";
+  registerForm.value.experience = "advanced";
 };
 
 onMounted(() => {
