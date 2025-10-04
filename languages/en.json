@@ -183,6 +183,15 @@
         "submit": "Next Step"
       },
       "stepSeven": {
+        "age": "years old",
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "advanced": "Advanced",
+        "objective": "Your objective",
+        "submit": "Match",
+        "reject": "Reject"
+      },
+      "stepEight": {
         "signUp": "Complete your profile",
         "email": "Email",
         "emailPlaceholder": "Enter your email",
@@ -194,7 +203,7 @@
         "passwordverifyPlaceholder": "Enter your password",
         "submit": "Next Step"
       },
-      "stepEight": {
+      "stepNine": {
         "verification": "Please enter the verification code sent to your email",
         "submit": "Submit"
       }

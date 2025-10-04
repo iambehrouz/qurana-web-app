@@ -110,6 +110,8 @@ const changeStatus = () => {
     status.value = "step-7";
   } else if (status.value == "step-7") {
     status.value = "step-8";
+  } else if (status.value == "step-8") {
+    status.value = "step-9";
   }
 };
 
@@ -128,11 +130,38 @@ const goBack = () => {
     status.value = "step-6";
   } else if (status.value == "step-8") {
     status.value = "step-7";
+  } else if (status.value == "step-9") {
+    status.value = "step-8";
   }
 };
 
+const getSelectedVerse = () => {
+  if (registerForm.value.verse) {
+    return phrases.pages.register.stepFour[registerForm.value.verse];
+  }
+  return "In the name of Allah, the Most Gracious, the Most Merciful. (Surah Al-Fatiha, 1)";
+};
+
+const getSelectedHadith = () => {
+  if (registerForm.value.hadith) {
+    return phrases.pages.register.stepFive[registerForm.value.hadith];
+  }
+  return "A Muslim is the one from whose tongue and hand other Muslims are safe.";
+};
+
+const acceptMatch = () => {
+  // Handle match acceptance
+  console.log("Match accepted");
+  changeStatus();
+};
+
+const rejectMatch = () => {
+  // Handle match rejection - go back to previous step
+  goBack();
+};
+
 const handleSubmit = async (e) => {
-  if (status.value === "step-7") {
+  if (status.value === "step-8") {
     message.value = "";
     if (
       !registerForm.value.email ||
@@ -154,7 +183,7 @@ const handleSubmit = async (e) => {
 
     registerForm.value.hash = response.data.data.hash;
 
-    status.value = "step-8";
+    status.value = "step-9";
 
     // store.layout.toasts.push({
     //   type: response.data.status ? "success" : "danger",
@@ -162,7 +191,7 @@ const handleSubmit = async (e) => {
     //   message: response.data.message,
     //   datetime: new Date(),
     // });
-  } else if (status.value === "step-8") {
+  } else if (status.value === "step-9") {
     const response = await axios.post(
       config.apiUrl + "/account/register/verify",
       {
@@ -216,12 +245,22 @@ onMounted(() => {
   <div class="register-page container-fluid px-0">
     <div class="top-image w-100">
       <img
+        v-if="status == 'step-7'"
         class="img-fluid"
-        src="../../assets/images/register-stepone-back.svg"
+        src="/assets/images/matching-back.svg"
+        alt="Register Top Image"
+      />
+      <img
+        v-else
+        class="img-fluid"
+        src="/assets/images/register-stepone-back.svg"
         alt="Register Top Image"
       />
     </div>
-    <div class="register-box container px-3">
+    <div
+      class="register-box container"
+      :class="status == 'step-7' ? 'px-1' : 'px-3'"
+    >
       <form class="verse-form p-0 m-0" v-if="status === 'step-1'">
         <div class="video-wrapper w-100 mb-3">
           <video
@@ -465,11 +504,26 @@ onMounted(() => {
             <!-- <div class="participant-icon">
               <i class="fas fa-user"></i>
             </div> -->
-            <div class="participant-option px-2 py-3" :class="{ selected: registerForm.participants === option.key }">
+            <div
+              class="participant-option px-2 py-3"
+              :class="{ selected: registerForm.participants === option.key }"
+            >
               <div class="participant-icon">
-                <img src="/assets/images/one-user.svg" alt="Participant Icon" v-if="option.key === 1" />
-                <img src="/assets/images/two-user.svg" alt="Participant Icon" v-if="option.key === 2" />
-                <img src="/assets/images/four-user.svg" alt="Participant Icon" v-if="option.key === 4" />
+                <img
+                  src="/assets/images/one-user.svg"
+                  alt="Participant Icon"
+                  v-if="option.key === 1"
+                />
+                <img
+                  src="/assets/images/two-user.svg"
+                  alt="Participant Icon"
+                  v-if="option.key === 2"
+                />
+                <img
+                  src="/assets/images/four-user.svg"
+                  alt="Participant Icon"
+                  v-if="option.key === 4"
+                />
               </div>
               <div class="participant-label text-center">
                 {{ phrases.pages.register.stepSix[option.label] }}
@@ -489,10 +543,14 @@ onMounted(() => {
               v-model="registerForm.city"
               placeholder="| Paris"
               class="city-input"
+              :class="{ selected: registerForm.city }"
               readonl
               @click="toggleCityDropdown"
             />
-            <div class="city-dropdown-icon">
+            <div
+              class="city-dropdown-icon"
+              :class="{ 'd-none': registerForm.city }"
+            >
               <i class="fas fa-chevron-down"></i>
             </div>
           </div>
@@ -508,7 +566,10 @@ onMounted(() => {
               "
             >
               <div class="city-icon">
-                <i class="fas fa-building"></i>
+                <img
+                  src="../../assets/images/city-icon.svg"
+                  alt="City Icon"
+                />
               </div>
               <div class="city-name">{{ city.label }}</div>
             </div>
@@ -524,19 +585,107 @@ onMounted(() => {
           </button>
         </div>
       </form>
-      <form class="register-form p-0 m-0" v-else-if="status === 'step-7'">
+      <form class="profile-form p-0 m-0" v-else-if="status === 'step-7'">
+        <!-- User Profile Header -->
+        <div class="profile-container">
+          <div class="profile-header text-center mb-4">
+            <h1 class="profile-name">
+              {{ registerForm.fullname || "Marie Dubois" }}
+            </h1>
+          </div>
+
+          <!-- Profile Cards -->
+          <div class="profile-cards row mb-4">
+            <div class="col-4 px-2">
+              <div class="profile-card">
+                <div class="profile-card-icon">
+                  <img
+                    src="../../assets/images/sand-clock.svg"
+                    alt="Age Icon"
+                  />
+                </div>
+                <div class="profile-card-text">
+                  {{ registerForm.age || "32" }}
+                  {{ phrases.pages.register.stepSeven.age }}
+                </div>
+              </div>
+            </div>
+            <div class="col-4 px-2">
+              <div class="profile-card">
+                <div class="profile-card-icon">
+                  <img
+                    src="../../assets/images/level-bar.svg"
+                    alt="Level Icon"
+                  />
+                </div>
+                <div class="profile-card-text">
+                  {{
+                    phrases.pages.register.stepSeven[
+                      registerForm.userLevelType
+                    ] || phrases.pages.register.stepSeven.intermediate
+                  }}
+                </div>
+              </div>
+            </div>
+            <div class="col-4 px-2">
+              <div class="profile-card">
+                <div class="profile-card-icon">
+                  <img
+                    src="../../assets/images/goal.svg"
+                    alt="Objective Icon"
+                  />
+                </div>
+                <div class="profile-card-text">
+                  {{ phrases.pages.register.stepSeven.objective }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Verse Section -->
+          <div class="content-section mb-3">
+            <h3 class="section-title">Verse</h3>
+            <div class="content-card">
+              <p class="content-text">
+                {{ getSelectedVerse() }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Hadith Section -->
+          <div class="content-section mb-2">
+            <h3 class="section-title">Hadith</h3>
+            <div class="content-card">
+              <p class="content-text">
+                {{ getSelectedHadith() }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="container-fluid px-0 text-center button-group">
+          <button type="button" class="match-button" @click="acceptMatch()">
+            {{ phrases.pages.register.stepSeven.submit }}
+          </button>
+          <button type="button" class="reject-button" @click="rejectMatch()">
+            {{ phrases.pages.register.stepSeven.reject }}
+          </button>
+        </div>
+      </form>
+      <form class="register-form p-0 m-0" v-else-if="status === 'step-8'">
         <h1 class="form-title mb-5">
           {{ phrases.pages.register.stepOne.signUp }}
         </h1>
 
         <div class="form-group">
           <label class="form-label">{{
-            phrases.pages.register.stepSeven.email
+            phrases.pages.register.stepEight.email
           }}</label>
           <input
             type="email"
             v-model="registerForm.email"
-            :placeholder="phrases.pages.register.stepSeven.emailPlaceholder"
+            :placeholder="phrases.pages.register.stepEight.emailPlaceholder"
             class="form-input"
             required
           />
@@ -544,37 +693,37 @@ onMounted(() => {
 
         <div class="form-group">
           <label class="form-label">{{
-            phrases.pages.register.stepSeven.phone
+            phrases.pages.register.stepEight.phone
           }}</label>
           <input
             type="number"
             v-model="registerForm.phone"
-            :placeholder="phrases.pages.register.stepSeven.phonePlaceholder"
+            :placeholder="phrases.pages.register.stepEight.phonePlaceholder"
             class="form-input"
             required
           />
         </div>
         <div class="form-group">
           <label class="form-label">{{
-            phrases.pages.register.stepSeven.password
+            phrases.pages.register.stepEight.password
           }}</label>
           <input
             type="password"
             v-model="registerForm.password"
-            :placeholder="phrases.pages.register.stepSeven.passwordPlaceholder"
+            :placeholder="phrases.pages.register.stepEight.passwordPlaceholder"
             class="form-input"
             required
           />
         </div>
         <div class="form-group">
           <label class="form-label">{{
-            phrases.pages.register.stepSeven.passwordverify
+            phrases.pages.register.stepEight.passwordverify
           }}</label>
           <input
             type="password"
             v-model="registerForm.passwordverify"
             :placeholder="
-              phrases.pages.register.stepSeven.passwordverifyPlaceholder
+              phrases.pages.register.stepEight.passwordverifyPlaceholder
             "
             class="form-input"
             required
@@ -586,14 +735,14 @@ onMounted(() => {
             {{ phrases.pages.register.back }}
           </button>
           <button type="button" class="submit-button" @click="handleSubmit()">
-            {{ phrases.pages.register.stepSeven.submit }}
+            {{ phrases.pages.register.stepEight.submit }}
           </button>
         </div>
       </form>
-      <form class="register-form p-0 m-0" v-else-if="status === 'step-8'">
+      <form class="register-form p-0 m-0" v-else-if="status === 'step-9'">
         <div class="form-group">
           <!-- <label class="form-label">{{
-            phrases.pages.register.stepEight.email
+            phrases.pages.register.stepNine.email
           }}</label> -->
           <input
             type="email"
@@ -604,7 +753,7 @@ onMounted(() => {
         </div>
         <div class="form-group">
           <p>
-            {{ phrases.pages.register.stepEight.verification }}
+            {{ phrases.pages.register.stepNine.verification }}
           </p>
         </div>
 
@@ -627,7 +776,7 @@ onMounted(() => {
             {{ phrases.pages.register.back }}
           </button>
           <button type="button" class="submit-button" @click="handleSubmit()">
-            {{ phrases.pages.register.stepEight.submit }}
+            {{ phrases.pages.register.stepNine.submit }}
           </button>
         </div>
       </form>
@@ -1142,7 +1291,7 @@ onMounted(() => {
       cursor: pointer;
       transition: all 0.3s ease;
       background-color: white;
-      box-shadow: 0 3px 8px 0 rgba(142, 68, 173, 0.10);
+      box-shadow: 0 3px 8px 0 rgba(142, 68, 173, 0.1);
       // min-width: 140px;
       justify-content: flex-start;
 
@@ -1157,20 +1306,20 @@ onMounted(() => {
         font-size: 1rem;
         img {
           width: 24px;
-        height: 24px;
+          height: 24px;
         }
       }
 
       .participant-label {
         font-family: "sans-serif", sans-serif;
         font-size: 0.9rem;
-        color: #8e44ad;
+        color: var(--secondary-color);
         font-weight: 500;
         text-align: left;
       }
 
       &.selected {
-        background-color: #8e44ad;
+        background-color: var(--secondary-color);
 
         .participant-icon {
           color: white;
@@ -1201,10 +1350,10 @@ onMounted(() => {
 
       .city-input {
         width: 100%;
-        padding: 20px 50px 15px 15px;
+        padding: 15px 12px 12px 40px;
         border: 2px solid #e0e0e0;
         border-radius: 8px;
-        font-size: 1rem;
+        font-size: 1.3rem;
         color: #333;
         background-color: white;
         cursor: pointer;
@@ -1212,7 +1361,12 @@ onMounted(() => {
 
         &:focus {
           outline: none;
-          border-color: var(--primary-color);
+          border-color: var(--secondary-color);
+        }
+
+        &.selected {
+          background-color: var(--secondary-color);
+          color: white;
         }
 
         &[readonly] {
@@ -1253,13 +1407,15 @@ onMounted(() => {
         transition: background-color 0.2s ease;
 
         .city-icon {
-          width: 20px;
-          height: 20px;
           margin-right: 12px;
           color: #666;
           display: flex;
           align-items: center;
           justify-content: center;
+          img {
+            width: 20px;
+            height: 20px;
+          }
         }
 
         .city-name {
@@ -1320,6 +1476,131 @@ onMounted(() => {
     }
   }
 }
+.profile-form {
+    position: relative;
+    margin-top: -200px !important;
+    z-index: 3;
+
+    .profile-container {
+      background-image: url("/assets/images/matching-card.svg");
+      background-position: center top;
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 220px 20px 40px 20px;
+      border-radius: 12px;
+      // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .profile-header {
+      .profile-name {
+        // font-family: "serif", serif;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #000;
+        margin-bottom: 0;
+      }
+    }
+
+    .profile-cards {
+      .profile-card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px 10px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+
+        .profile-card-icon {
+          // margin-bottom: 10px;
+
+          img {
+            height: 18px;
+            width: 18px;
+          }
+        }
+
+        .profile-card-text {
+          font-size: 0.7rem;
+          color: #000;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .content-section {
+      .section-title {
+        font-size: 1rem;
+        color: #6c757d;
+        margin-bottom: 10px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .content-card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        .content-text {
+          color: #000;
+          font-size: 0.9rem;
+          line-height: 1.2;
+          margin: 0;
+          // font-family: sans-serif;
+        }
+      }
+    }
+
+    .button-group {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+
+      .reject-button {
+        background-color: #fff;
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+        padding: 10px 30px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        // &:hover {
+        //   background-color: #c82333;
+        // }
+      }
+
+      .match-button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        // &:hover {
+        //   background-color: #218838;
+        // }
+      }
+    }
+  }
 
 @media (max-width: 768px) {
   .register-form {
@@ -1400,9 +1681,9 @@ onMounted(() => {
 
         .participant-icon {
           img {
-          width: 20px;
-        height: 20px;
-        }
+            width: 20px;
+            height: 20px;
+          }
           margin-right: 5px;
           margin-bottom: 0;
           font-size: 0.6rem;
@@ -1418,8 +1699,134 @@ onMounted(() => {
       .city-input-wrapper {
         .city-input {
           padding: 15px 12px 12px 40px;
-          font-size: 0.9rem;
+          font-size: 1rem;
         }
+      }
+    }
+  }
+
+  .profile-form {
+    position: relative;
+    margin-top: -155px !important;
+    z-index: 3;
+
+    .profile-container {
+      background-image: url("/assets/images/matching-card.svg");
+      background-position: center top;
+      background-size: contain;
+      background-repeat: no-repeat;
+      padding: 166px 20px 40px 20px;
+      border-radius: 12px;
+      // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .profile-header {
+      .profile-name {
+        // font-family: "serif", serif;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #000;
+        margin-bottom: 0;
+      }
+    }
+
+    .profile-cards {
+      .profile-card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px 10px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
+        &:hover {
+          transform: translateY(-2px);
+        }
+
+        .profile-card-icon {
+          // margin-bottom: 10px;
+
+          img {
+            height: 18px;
+            width: 18px;
+          }
+        }
+
+        .profile-card-text {
+          font-size: 0.7rem;
+          color: #000;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .content-section {
+      .section-title {
+        font-size: 1rem;
+        color: #6c757d;
+        margin-bottom: 10px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .content-card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+        .content-text {
+          color: #000;
+          font-size: 0.9rem;
+          line-height: 1.2;
+          margin: 0;
+          // font-family: sans-serif;
+        }
+      }
+    }
+
+    .button-group {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+
+      .reject-button {
+        background-color: #fff;
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+        padding: 10px 30px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        // &:hover {
+        //   background-color: #c82333;
+        // }
+      }
+
+      .match-button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        // &:hover {
+        //   background-color: #218838;
+        // }
       }
     }
   }

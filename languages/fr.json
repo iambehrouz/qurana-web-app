@@ -183,6 +183,15 @@
         "submit": "Étape suivante"
       },
       "stepSeven": {
+        "age": "ans",
+        "beginner": "Débutant",
+        "intermediate": "Intermédiaire",
+        "advanced": "Experte",
+        "objective": "Votre objectif",
+        "submit": "Correspondre",
+        "reject": "Rejeter"
+      },
+      "stepEight": {
         "signUp": "Complétez votre profil",
         "email": "E-mail",
         "emailPlaceholder": "Entrez votre e-mail",
@@ -194,7 +203,7 @@
         "passwordverifyPlaceholder": "Entrez à nouveau votre mot de passe",
         "submit": "Étape suivante"
       },
-      "stepEight": {
+      "stepNine": {
         "verification": "Veuillez entrer le code de vérification envoyé à votre e-mail",
         "submit": "Valider"
       }
